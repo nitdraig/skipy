@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@nextui-org/react";
 import useDarkMode from "use-dark-mode";
 
 export const ThemeSwitcher = () => {
@@ -7,8 +8,18 @@ export const ThemeSwitcher = () => {
 
   return (
     <div>
-      <button onClick={darkMode.disable}>Light Mode</button>
-      <button onClick={darkMode.enable}>Dark Mode</button>
+      <Button
+        onClick={darkMode.disable}
+        color="secondary"
+        href="#"
+        variant="flat"
+      >
+        Light Mode
+      </Button>
+
+      <Button onClick={darkMode.enable} color="primary" href="#" variant="flat">
+        Dark Mode
+      </Button>
     </div>
   );
 };

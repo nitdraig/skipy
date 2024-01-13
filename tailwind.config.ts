@@ -14,7 +14,7 @@ module.exports = {
   plugins: [
     nextui({
       themes: {
-        "purple-dark": {
+        dark: {
           extend: "dark", // <- inherit default values from dark theme
           colors: {
             background: "#0D001A",
@@ -34,18 +34,9 @@ module.exports = {
               foreground: "#ffffff",
             },
             focus: "#F182F6",
-          },
-          layout: {
-            disabledOpacity: "0.3",
-            radius: {
-              small: "4px",
-              medium: "6px",
-              large: "8px",
-            },
-            borderWidth: {
-              small: "1px",
-              medium: "2px",
-              large: "3px",
+            secondary: {
+              900: "#fff",
+              DEFAULT: "#fff",
             },
           },
         },

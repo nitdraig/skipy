@@ -2,9 +2,10 @@
 import React from "react";
 import useDarkMode from "use-dark-mode";
 import { App } from "./components/App";
+import Nav from "./components/Navbar";
 
 export default function Home() {
-  const darkMode = useDarkMode(false);
+  const darkMode = useDarkMode(true);
 
   return (
     <main
@@ -12,6 +13,7 @@ export default function Home() {
         darkMode.value ? "dark" : ""
       } text-foreground bg-background`}
     >
+      <Nav />
       <App />
     </main>
   );
