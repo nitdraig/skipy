@@ -7,16 +7,17 @@ import {
   Link,
   Button,
 } from "@nextui-org/react";
-import { ThemeSwitcher } from "./ThemeSwitcher";
+import Switcher from "./darkMode/Switch";
 
 export default function Nav() {
   return (
     <Navbar>
       <NavbarBrand>
-        <p className="font-bold text-inherit">ACME</p>
+        <img className="h-36 w-48 mt-8 ml-[-6em]" src="/logo.png" />
+        {/* <p className="font-bold">Skipy</p> */}
       </NavbarBrand>
 
-      <NavbarContent className=" sm:flex gap-4" justify="center">
+      {/* <NavbarContent className=" sm:flex gap-4" justify="center">
         <NavbarItem>
           <Link href="#">Features</Link>
         </NavbarItem>
@@ -28,13 +29,10 @@ export default function Nav() {
         <NavbarItem>
           <Link href="#">Integrations</Link>
         </NavbarItem>
-      </NavbarContent>
+      </NavbarContent> */}
       <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
-        </NavbarItem>
-        <NavbarItem>
-          <ThemeSwitcher />
+        <NavbarItem className="mt-8">
+          <Switcher />
         </NavbarItem>
       </NavbarContent>
     </Navbar>

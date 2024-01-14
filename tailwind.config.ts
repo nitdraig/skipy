@@ -6,6 +6,10 @@ module.exports = {
   content: [
     // ...
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{html,js}",
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {},
@@ -15,7 +19,7 @@ module.exports = {
     nextui({
       themes: {
         dark: {
-          extend: "dark", // <- inherit default values from dark theme
+          extend: "dark",
           colors: {
             background: "#0D001A",
             foreground: "#ffffff",

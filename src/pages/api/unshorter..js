@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     if (link) {
       // Permitir solicitudes CORS desde cualquier origen
       res.setHeader("Access-Control-Allow-Origin", "*");
-
+      console.log("Original URL found:", link.originalUrl);
       // Devolver la URL original en formato JSON
       res.status(200).json({ originalUrl: link.originalUrl });
     } else {
