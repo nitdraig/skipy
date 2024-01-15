@@ -1,4 +1,3 @@
-// pages/api/unshorter.js
 import mongoose from "mongoose";
 import Link from "../models/Link";
 
@@ -7,24 +6,29 @@ mongoose.connect("mongodb://localhost:27017/linkshortener", {
   useUnifiedTopology: true,
 });
 
-export default async function handler(req, res) {
+export default async function getOriginalUrl(req, res) {
+  if (req.method !== "GET") {
+    return res.status(405).json({ error: "Método no permitido" });
+  }
+
   const { slug } = req.query;
 
-  try {
-    // Buscar la URL original en la base de datos MongoDB
-    const link = await Link.findOne({ slug });
+  if (!slug) {
+    return res.status(400).json({ error: "Slug no proporcionado" });
+  }
 
-    if (link) {
-      // Permitir solicitudes CORS desde cualquier origen
-      res.setHeader("Access-Control-Allow-Origin", "*");
-      console.log("Original URL found:", link.originalUrl);
-      // Devolver la URL original en formato JSON
-      res.status(200).json({ originalUrl: link.originalUrl });
-    } else {
-      res.status(404).json({ error: "URL no encontrada" });
+  try {
+    // Buscar en la base de datos por el slug
+    const existingLink = await Link.findOne({ slug });
+
+    if (!existingLink) {
+      return res.status(404).json({ error: "Enlace no encontrado" });
     }
+
+    // Devolver la URL original
+    res.status(200).json({ originalUrl: existingLink.originalUrl });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Error al desacortar la URL" });
+    console.error("Error al procesar la solicitud:", error);
+    res.status(500).json({ error: "Error interno del servidor" });
   }
 }

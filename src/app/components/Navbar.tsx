@@ -13,7 +13,7 @@ export default function Nav() {
   return (
     <Navbar>
       <NavbarBrand>
-        <img className="h-36 w-48 mt-8 ml-[-6em]" src="/logo.png" />
+        <img className="h-36 w-48 mt-8 sm:ml-[-6em]" src="/logo.png" />
         {/* <p className="font-bold">Skipy</p> */}
       </NavbarBrand>
 

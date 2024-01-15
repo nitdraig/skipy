@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+}
+html {
+  overflow-x: hidden !important;
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  scrollbar-color: white;
+}
+::-webkit-scrollbar-thumb {
+  background: #0d001a;
+  border-radius: 8px;
+}
+
+::selection {
+  color: rgb(0, 0, 0);
+  background: #f8f8f8;
+}
