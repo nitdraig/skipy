@@ -102,8 +102,7 @@ const QRCodeGenerator = () => {
             Generador de Código QR
           </h3>
           <p className="mt-4 text-base text-gray-300 dark:text-gray-600 group-hover:text-white  ">
-            Puedes elegir la cantidad de caracteres desde 7 a 30, no se guardan
-            en ningún lado.
+            Puedes crear tu QR para tu web o URL personal.
           </p>
         </div>
       </a>
@@ -160,9 +159,13 @@ const QRCodeGenerator = () => {
                         className="border border-blue-gray-200 mt-4"
                       />
                       <div className="flex items-center mt-2">
-                        <Button color="success" onClick={handleDownloadClick}>
+                        <button
+                          className="group relative h-10 w-full sm:w-48 overflow-hidden rounded-[7px] bg-pink-500 text-lg font-bold text-white"
+                          onClick={handleDownloadClick}
+                        >
                           Descargar QR
-                        </Button>
+                          <div className="absolute inset-0 h-full w-full scale-0 rounded-[7px] transition-all duration-300 group-hover:scale-100 group-hover:bg-white/30"></div>
+                        </button>
                       </div>
                     </>
                   )}

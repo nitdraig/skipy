@@ -3,6 +3,8 @@ import { InputShorter } from "./InputShorter";
 import { InputUnShorter } from "./InputUnshorter";
 import PasswordGenerator from "./PasswordGenerator";
 import QRCodeGenerator from "./QRGenerator";
+import CreditCardGenerator from "./CreditCardGenerator";
+import EncoderDecoder from "./Encoder";
 
 const Hero = () => {
   return (
@@ -18,6 +20,8 @@ const Hero = () => {
             <InputUnShorter />
             <PasswordGenerator />
             <QRCodeGenerator />
+            <CreditCardGenerator />
+            <EncoderDecoder />
           </div>
         </div>
       </div>
