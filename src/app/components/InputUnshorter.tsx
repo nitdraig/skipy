@@ -8,6 +8,8 @@ import {
   Button,
   useDisclosure,
 } from "@nextui-org/react";
+import Image from "next/image";
+import useDarkMode from "use-dark-mode";
 
 export const InputUnShorter = () => {
   const [originalUrl, setOriginalUrl] = useState("");
@@ -15,6 +17,8 @@ export const InputUnShorter = () => {
   const [error, setError] = useState("");
   const [shortenedUrl, setShortenedUrl] = useState("");
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { value: isDarkMode } = useDarkMode(true);
+
   const handleShortenedUrlChange = (event: any) => {
     setShortenedUrl(event.target.value);
   };
@@ -80,6 +84,62 @@ export const InputUnShorter = () => {
     setError(""); // Limpiar el mensaje de error si existe
   };
 
+  const ImgColorBlack = () => {
+    return (
+      <svg
+        viewBox="0 0 24 24"
+        width="5em"
+        height="5em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="dark:stroke-white"
+      >
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+          <path
+            d="M4.9996 7V11M9.9996 2V6M17.9996 16V20M2.9996 9H6.9996M7.9996 4H11.9996M15.9996 18H19.9996M13.9996 7L16.828 9.82843M19.5162 3.74612L20.0819 4.3118C20.4779 4.70782 20.6759 4.90583 20.7501 5.13416C20.8154 5.335 20.8154 5.55135 20.7501 5.75219C20.6759 5.98052 20.4779 6.17853 20.0819 6.57454L6.52508 20.1314C6.12906 20.5274 5.93105 20.7254 5.70272 20.7996C5.50188 20.8649 5.28553 20.8649 5.08469 20.7996C4.85636 20.7254 4.65835 20.5274 4.26234 20.1314L3.69665 19.5657C3.30063 19.1697 3.10262 18.9717 3.02844 18.7433C2.96318 18.5425 2.96318 18.3262 3.02844 18.1253C3.10262 17.897 3.30063 17.699 3.69665 17.303L17.2535 3.74612C17.6495 3.3501 17.8475 3.15209 18.0758 3.0779C18.2767 3.01265 18.493 3.01265 18.6939 3.0779C18.9222 3.15209 19.1202 3.3501 19.5162 3.74612Z"
+            stroke="#000000"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </g>
+      </svg>
+    );
+  };
+  const ImgColorWhite = () => {
+    return (
+      <svg
+        viewBox="0 0 24 24"
+        width="5em"
+        height="5em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="dark:stroke-white"
+      >
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+          <path
+            d="M4.9996 7V11M9.9996 2V6M17.9996 16V20M2.9996 9H6.9996M7.9996 4H11.9996M15.9996 18H19.9996M13.9996 7L16.828 9.82843M19.5162 3.74612L20.0819 4.3118C20.4779 4.70782 20.6759 4.90583 20.7501 5.13416C20.8154 5.335 20.8154 5.55135 20.7501 5.75219C20.6759 5.98052 20.4779 6.17853 20.0819 6.57454L6.52508 20.1314C6.12906 20.5274 5.93105 20.7254 5.70272 20.7996C5.50188 20.8649 5.28553 20.8649 5.08469 20.7996C4.85636 20.7254 4.65835 20.5274 4.26234 20.1314L3.69665 19.5657C3.30063 19.1697 3.10262 18.9717 3.02844 18.7433C2.96318 18.5425 2.96318 18.3262 3.02844 18.1253C3.10262 17.897 3.30063 17.699 3.69665 17.303L17.2535 3.74612C17.6495 3.3501 17.8475 3.15209 18.0758 3.0779C18.2767 3.01265 18.493 3.01265 18.6939 3.0779C18.9222 3.15209 19.1202 3.3501 19.5162 3.74612Z"
+            stroke="#ffffff"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </g>
+      </svg>
+    );
+  };
   return (
     <>
       <a
@@ -87,16 +147,8 @@ export const InputUnShorter = () => {
         className="transition-all cursor-pointer  duration-1000 dark:bg-white bg-[#0D001A]  hover:bg-[#3c2058] dark:hover:bg-[#3c2058] hover:shadow-xl m-2 p-4 relative z-40 group  "
       >
         <div className="bg-[#3c2058]]/50 top-0 left-0 w-24 h-1 z-30  transition-all duration-200  group-hover:bg-white group-hover:w-1/2  "></div>
-        <div className="py-2 px-9 relative  ">
-          <svg
-            className="w-16 h-16 fill-gray-400 group-hover:fill-white"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 32 32"
-            id="polo-tshirt"
-          >
-            <path d="m16.962 5.841 3.582.717-.716-4.115zM12.172 2.443l-.716 4.115 3.582-.717z"></path>
-            <path d="M28.488 7.301a5.354 5.354 0 0 0-2.743-3.305c-.112-.056-2.96-1.2-4.942-1.996l.87 4.987a.52.52 0 0 1-.488.746.535.535 0 0 1-.101-.01L16.5 6.806V12a.5.5 0 1 1-1 0V6.806l-4.583.917a.518.518 0 0 1-.613-.598L11.196 2c-1.982.796-4.828 1.94-4.94 1.996a5.36 5.36 0 0 0-2.75 3.328l-1.492 6.26c-.042.175.01.359.138.486l.608.608a5.487 5.487 0 0 0 3.907 1.618c.196 0 .375-.111.464-.287l1.072-2.145c.013.292.02.584.02.876V28.48c0 .231.153.435.375.499A27.03 27.03 0 0 0 16 30c2.508 0 5.015-.34 7.402-1.022a.52.52 0 0 0 .376-.5V14.74c0-.292.006-.584.019-.876l1.073 2.145a.519.519 0 0 0 .463.287 5.487 5.487 0 0 0 3.907-1.618l.608-.608a.518.518 0 0 0 .138-.487l-1.498-6.282zM17.03 11.5c-.276 0-.505-.224-.505-.5s.219-.5.495-.5h.01a.5.5 0 0 1 0 1zm0-2c-.276 0-.505-.224-.505-.5s.219-.5.495-.5h.01a.5.5 0 0 1 0 1z"></path>
-          </svg>
+        <div className="py-2 px-9 relative">
+          {isDarkMode ? <ImgColorBlack /> : <ImgColorWhite />}
           <h3 className="mt-8 text-lg font-semibold text-white dark:text-black group-hover:text-white ">
             Desacortador de Links
           </h3>

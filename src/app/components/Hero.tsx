@@ -2,6 +2,7 @@ import React from "react";
 import { InputShorter } from "./InputShorter";
 import { InputUnShorter } from "./InputUnshorter";
 import PasswordGenerator from "./PasswordGenerator";
+import QRCodeGenerator from "./QRGenerator";
 
 const Hero = () => {
   return (
@@ -16,6 +17,7 @@ const Hero = () => {
             <InputShorter />
             <InputUnShorter />
             <PasswordGenerator />
+            <QRCodeGenerator />
           </div>
         </div>
       </div>
