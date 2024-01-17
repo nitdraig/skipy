@@ -7,7 +7,6 @@ import {
   Button,
   useDisclosure,
 } from "@nextui-org/react";
-import Image from "next/image";
 import React, { useState } from "react";
 import useDarkMode from "use-dark-mode";
 
@@ -19,7 +18,6 @@ export const InputShorter = () => {
   const { value: isDarkMode } = useDarkMode(true);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const shortenUrl = async () => {
-    // Validar si el campo de entrada está vacío
     if (!originalUrl.trim()) {
       setError("¡Debes ingresar una URL!");
       return;
@@ -35,7 +33,7 @@ export const InputShorter = () => {
 
     const data = await response.json();
     setShortenedUrl(data.shortenedUrl);
-    setError(""); // Limpiar el mensaje de error si existe
+    setError("");
   };
 
   const copyToClipboard = () => {
@@ -107,6 +105,8 @@ export const InputShorter = () => {
       </svg>
     );
   };
+
+  const imgComponent = isDarkMode ? <ImgColorBlack /> : <ImgColorWhite />;
   return (
     <>
       <a
@@ -115,7 +115,7 @@ export const InputShorter = () => {
       >
         <div className="bg-[#387af9]]/50 top-0 left-0 w-24 h-1 z-30  transition-all duration-200   group-hover:bg-white group-hover:w-1/2  "></div>
         <div className="py-2 px-9 relative  ">
-          {isDarkMode ? <ImgColorBlack /> : <ImgColorWhite />}
+          {imgComponent}
           <h3 className="mt-8 text-lg font-semibold text-white dark:text-black group-hover:text-white ">
             Acortador de Link
           </h3>

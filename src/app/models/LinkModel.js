@@ -6,6 +6,6 @@ const linkSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
-const Link = mongoose.models.Link || mongoose.model("Link", linkSchema);
+const LinkModel = mongoose.models.Link || mongoose.model("Link", linkSchema);
 
-export default Link;
+export default LinkModel;

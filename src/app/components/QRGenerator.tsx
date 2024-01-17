@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import QRCode from "qrcode.react";
 import {
   Modal,
@@ -39,7 +39,7 @@ const QRCodeGenerator = () => {
     const result = generateQRCode();
     if (result && result.dataURL && result.urlWithProtocol) {
       const link = document.createElement("a");
-      const fileName = result.urlWithProtocol.replace(/[^a-zA-Z0-9]/g, "_"); // Remueve caracteres no deseados
+      const fileName = result.urlWithProtocol.replace(/[^a-zA-Z0-9]/g, "_");
       link.href = result.dataURL;
       link.download = `${fileName}.png`;
       document.body.appendChild(link);
@@ -89,6 +89,7 @@ const QRCodeGenerator = () => {
       </svg>
     );
   };
+  const imgComponent = isDarkMode ? <ImgColorBlack /> : <ImgColorWhite />;
   return (
     <>
       <a
@@ -97,7 +98,7 @@ const QRCodeGenerator = () => {
       >
         <div className="bg-[#387af9]]/50 top-0 left-0 w-24 h-1 z-30 transition-all duration-200 group-hover:bg-white group-hover:w-1/2  "></div>
         <div className="py-2 px-9 relative  ">
-          {isDarkMode ? <ImgColorBlack /> : <ImgColorWhite />}
+          {imgComponent}
           <h3 className="mt-8 text-lg font-semibold text-white dark:text-black group-hover:text-white ">
             Generador de Código QR
           </h3>

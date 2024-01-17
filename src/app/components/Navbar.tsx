@@ -4,8 +4,6 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
-  Button,
 } from "@nextui-org/react";
 import Switcher from "./darkMode/Switch";
 

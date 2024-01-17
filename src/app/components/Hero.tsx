@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { InputShorter } from "./InputShorter";
 import { InputUnShorter } from "./InputUnshorter";
@@ -5,10 +6,19 @@ import PasswordGenerator from "./PasswordGenerator";
 import QRCodeGenerator from "./QRGenerator";
 import CreditCardGenerator from "./CreditCardGenerator";
 import EncoderDecoder from "./Encoder";
+import useDarkMode from "use-dark-mode";
+import Footer from "./Footer";
+import Nav from "./Navbar";
 
 const Hero = () => {
+  const darkMode = useDarkMode(false);
   return (
-    <section className="w-full">
+    <main
+      className={`${
+        darkMode.value ? "dark" : ""
+      } text-foreground bg-background`}
+    >
+      <Nav />
       <div className="relative flex flex-col min-h-screen px-6 py-8">
         <div className="flex flex-col w-full ">
           <h2 className="sm:text-6xl text-2xl dark:text-white text-[#162255]">
@@ -27,7 +37,8 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </section>
+      <Footer />
+    </main>
   );
 };
 

@@ -8,7 +8,6 @@ import {
   Button,
   useDisclosure,
 } from "@nextui-org/react";
-import Image from "next/image";
 import useDarkMode from "use-dark-mode";
 
 export const InputUnShorter = () => {
@@ -24,7 +23,6 @@ export const InputUnShorter = () => {
   };
 
   const shortenUrl = async () => {
-    // Validar si el campo de entrada está vacío
     if (!originalUrl.trim()) {
       setError("¡Debes ingresar una URL!");
       return;
@@ -41,7 +39,7 @@ export const InputUnShorter = () => {
     const data = await response.json();
     setShortenedUrl(data.shortenedUrl);
     setError("");
-    setOriginalUrl(""); // Limpiar la URL original después de acortar
+    setOriginalUrl("");
   };
 
   const copyToClipboard = () => {
@@ -59,16 +57,13 @@ export const InputUnShorter = () => {
   };
 
   const expandUrl = async () => {
-    // Validar si el campo de entrada está vacío
     if (!shortenedUrl.trim()) {
       setError("¡Debes ingresar un enlace acortado!");
       return;
     }
 
-    // Extraer el slug de la URL acortada
     const slug = shortenedUrl.substring(shortenedUrl.lastIndexOf("/") + 1);
 
-    // Realizar una solicitud para obtener la URL original desde el backend
     const response = await fetch(`/api/unshorter?slug=${slug}`, {
       method: "GET",
     });
@@ -81,7 +76,7 @@ export const InputUnShorter = () => {
 
     const data = await response.json();
     setOriginalUrl(data.originalUrl);
-    setError(""); // Limpiar el mensaje de error si existe
+    setError("");
   };
 
   const ImgColorBlack = () => {
@@ -140,6 +135,8 @@ export const InputUnShorter = () => {
       </svg>
     );
   };
+
+  const imgComponent = isDarkMode ? <ImgColorBlack /> : <ImgColorWhite />;
   return (
     <>
       <a
@@ -148,7 +145,7 @@ export const InputUnShorter = () => {
       >
         <div className="bg-[#387af9]]/50 top-0 left-0 w-24 h-1 z-30  transition-all duration-200  group-hover:bg-white group-hover:w-1/2  "></div>
         <div className="py-2 px-9 relative">
-          {isDarkMode ? <ImgColorBlack /> : <ImgColorWhite />}
+          {imgComponent}
           <h3 className="mt-8 text-lg font-semibold text-white dark:text-black group-hover:text-white ">
             Desacortador de Links
           </h3>

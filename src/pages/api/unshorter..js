@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-import Link from "../models/Link";
+import LinkModel from "../../app/models/LinkModel";
 
-mongoose.connect("mongodb://localhost:27017/linkshortener", {
+mongoose.connect(process.env.MONGODB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -19,7 +19,7 @@ export default async function getOriginalUrl(req, res) {
 
   try {
     // Buscar en la base de datos por el slug
-    const existingLink = await Link.findOne({ slug });
+    const existingLink = await LinkModel.findOne({ slug });
 
     if (!existingLink) {
       return res.status(404).json({ error: "Enlace no encontrado" });

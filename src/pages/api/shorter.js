@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Link from "../models/Link";
+import LinkModel from "../../app/models/LinkModel";
 
 mongoose.connect(process.env.MONGODB, {
   useNewUrlParser: true,
@@ -30,7 +30,7 @@ export default async function handler(req, res) {
 
   try {
     // Verificar si la URL ya existe en la base de datos
-    const existingLink = await Link.findOne({ originalUrl });
+    const existingLink = await LinkModel.findOne({ originalUrl });
 
     if (existingLink) {
       // Si la URL ya existe, devolver el enlace corto existente
@@ -42,7 +42,7 @@ export default async function handler(req, res) {
     const slug = generateSlug();
 
     // Guardar en la base de datos MongoDB
-    await Link.create({ originalUrl, slug });
+    await LinkModel.create({ originalUrl, slug });
 
     const shortenedUrl = `${getBaseUrl(req)}/${slug}`;
     res.status(200).json({ shortenedUrl });
