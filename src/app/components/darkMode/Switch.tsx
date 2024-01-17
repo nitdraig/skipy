@@ -5,7 +5,7 @@ import { SunIcon } from "./SunIcon";
 import useDarkMode from "use-dark-mode";
 
 export default function Switcher() {
-  const darkMode = useDarkMode(false);
+  const darkMode = useDarkMode(true);
 
   const handleToggle = () => {
     darkMode.toggle();
@@ -16,7 +16,7 @@ export default function Switcher() {
       isSelected={darkMode.value}
       onChange={handleToggle}
       size="lg"
-      color="secondary"
+      color="primary"
       thumbIcon={({ isSelected, className }) =>
         isSelected ? (
           <SunIcon className={className} />

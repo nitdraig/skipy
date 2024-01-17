@@ -18,14 +18,14 @@ html {
 }
 ::-webkit-scrollbar {
   width: 8px;
-  scrollbar-color: white;
+  scrollbar-color: #eff5ff;
 }
 ::-webkit-scrollbar-thumb {
-  background: #0d001a;
+  background: #162255;
   border-radius: 8px;
 }
 
 ::selection {
   color: rgb(0, 0, 0);
-  background: #6f72ff;
+  background: #91c1ff;
 }

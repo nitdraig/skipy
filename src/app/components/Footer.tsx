@@ -9,9 +9,11 @@ const Footer = () => {
       <div className="  h-full flex flex-col gap-8 items-center justify-between p-10 sm:p-7">
         <span className="h-[1.1px] right-0 absolute w-full bg-gray-300 block"></span>
         <div className="mt-5">
-          <p>Proyecto sin fines de lucro</p>
+          <p className="dark:text-white text-[#162255]">
+            Proyecto sin fines de lucro
+          </p>
         </div>
-        <div className=" flex items-center  mb-2 justify-center gap-8 sm:gap-5">
+        <div className="dark:text-white text-[#162255] flex items-center  mb-2 justify-center gap-8 sm:gap-5">
           <p>Pero puedes donar para mantener a flote el mismo:</p>
           <a
             data-aos="fade-up"
@@ -41,7 +43,7 @@ const Footer = () => {
             <FaCcPaypal className=" dark:text-white text-black hover:text-[#dbdbdb] text-3xl hover:scale-125 cursor-pointer" />
           </a>
         </div>
-        <div className="sm:text-1xl dark:text-white text-black hover:text-[#dbdbdb]">
+        <div className="sm:text-1xl dark:text-white text-[#162255] hover:text-[#1b39b2]">
           <a href="https://www.agustin.top" target="_blank">
             Dev with love by Agustín Avellaneda
           </a>

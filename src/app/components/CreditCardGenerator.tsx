@@ -58,8 +58,8 @@ const CreditCardGenerator = () => {
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
         <g
           id="SVGRepo_tracerCarrier"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         ></g>
         <g id="SVGRepo_iconCarrier">
           <g>
@@ -99,8 +99,8 @@ const CreditCardGenerator = () => {
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
         <g
           id="SVGRepo_tracerCarrier"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         ></g>
         <g id="SVGRepo_iconCarrier">
           <g>
@@ -129,9 +129,9 @@ const CreditCardGenerator = () => {
     <>
       <a
         onClick={onOpen}
-        className="transition-all cursor-pointer  duration-1000 dark:bg-white bg-[#0D001A] hover:bg-[#3c2058] dark:hover:bg-[#3c2058] hover:shadow-xl m-2 p-4 relative z-40 group  "
+        className="transition-all cursor-pointer  duration-1000 dark:bg-white bg-[#1a45db] hover:bg-[#387af9] dark:hover:bg-[#387af9] hover:shadow-xl m-2 p-4 relative z-40 group  "
       >
-        <div className="bg-[#3c2058]]/50 top-0 left-0 w-24 h-1 z-30  transition-all duration-200   group-hover:bg-white group-hover:w-1/2  "></div>
+        <div className="bg-[#387af9]]/50 top-0 left-0 w-24 h-1 z-30  transition-all duration-200   group-hover:bg-white group-hover:w-1/2  "></div>
         <div className="py-2 px-9 relative  ">
           {isDarkMode ? <ImgColorBlack /> : <ImgColorWhite />}
           <h3 className="mt-8 text-lg font-semibold text-white dark:text-black group-hover:text-white ">
@@ -176,14 +176,14 @@ const CreditCardGenerator = () => {
               </ModalHeader>
               <ModalBody>
                 <button
-                  className="group relative h-10 w-full sm:w-48 overflow-hidden rounded-[7px] bg-zinc-500 text-lg font-bold text-white"
+                  className="group relative h-10 w-full sm:w-48 overflow-hidden rounded-[7px] bg-[#162255] text-lg font-bold text-white"
                   onClick={generateCreditCard}
                 >
                   Generar Tarjeta
                   <div className="absolute inset-0 h-full w-full scale-0 rounded-[7px] transition-all duration-300 group-hover:scale-100 group-hover:bg-white/30"></div>
                 </button>
                 {creditCard.number && (
-                  <div className="w-96 h-56 m-auto bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110">
+                  <div className="w-96 h-56 m-auto bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform ">
                     <img
                       className="relative object-cover w-full h-full rounded-xl"
                       src="https://i.imgur.com/kGkSg1v.png"
@@ -236,7 +236,7 @@ const CreditCardGenerator = () => {
                 )}
               </ModalBody>
               <ModalFooter>
-                <Button color="danger" variant="light" onPress={onClose}>
+                <Button color="primary" variant="light" onPress={onClose}>
                   Close
                 </Button>
               </ModalFooter>

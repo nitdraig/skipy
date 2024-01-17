@@ -1,7 +1,7 @@
 import React from "react";
 export const SunIcon = (props: any) => (
   <svg
-    aria-hidden="true"
+    ariaHidden="true"
     focusable="false"
     height="1em"
     role="presentation"
