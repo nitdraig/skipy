@@ -1,20 +1,22 @@
 import React from "react";
-import { GiCoffeeCup } from "react-icons/gi";
-import { SiMercadopago } from "react-icons/si";
-import { FaCcPaypal } from "react-icons/fa";
+import { FaBook, FaCcPaypal } from "react-icons/fa";
+import { BsLinkedin, BsTwitter } from "react-icons/bs";
 
 const Footer = () => {
   return (
     <div className=" mx-auto m-auto">
-      <div className="  h-full flex flex-col gap-8 items-center justify-between p-10 sm:p-7">
+      <div className="  h-full flex flex-col gap-8 items-center text-center justify-between p-10 sm:p-7">
         <span className="h-[1.1px] right-0 absolute w-full bg-gray-300 block"></span>
-        <div className="mt-5">
+        <div className="mt-5 mb-[-1em]">
           <p className="dark:text-white text-[#162255]">
-            Proyecto sin fines de lucro
+            Proyecto sin fines de lucro, de libre uso.
           </p>
+          <span className="text-[0.6rem] ">
+            (El creador no se responsabiliza por el mal uso de la misma)
+          </span>
         </div>
-        <div className="dark:text-white text-[#162255] flex items-center  mb-2 justify-center gap-8 sm:gap-5">
-          <p>Pero puedes donar para mantener a flote el mismo:</p>
+        <div className="dark:text-white text-[#162255] flex items-center mb-[-1em]   justify-center gap-8 sm:gap-5">
+          <p>Puedes seguirme en mis redes:</p>
           <a
             data-aos="fade-up"
             data-aos-duration="1000"
@@ -22,7 +24,7 @@ const Footer = () => {
             target="_blank"
             className="box font-medium text-white   flex items-center justify-center flex-col"
           >
-            <GiCoffeeCup className="dark:text-white text-black hover:text-[#dbdbdb] text-3xl hover:scale-125 cursor-pointer" />
+            <BsLinkedin className="dark:text-white text-black hover:text-[#6e6e6e]  text-3xl hover:scale-125 cursor-pointer" />
           </a>
           <a
             data-aos="fade-up"
@@ -31,19 +33,19 @@ const Footer = () => {
             target="_blank"
             className="box font-medium text-white  flex items-center justify-center flex-col"
           >
-            <SiMercadopago className=" dark:text-white text-black hover:text-[#dbdbdb] text-3xl hover:scale-125 cursor-pointer" />
+            <BsTwitter className=" dark:text-white text-black hover:text-[#6e6e6e] text-3xl hover:scale-125 cursor-pointer" />
           </a>
           <a
             data-aos="fade-up"
             data-aos-duration="1200"
-            href="https://twitter.com/nitdraig"
+            href="https://es.blog.agustin.top"
             target="_blank"
             className="box font-medium text-white  flex items-center justify-center flex-col"
           >
-            <FaCcPaypal className=" dark:text-white text-black hover:text-[#dbdbdb] text-3xl hover:scale-125 cursor-pointer" />
+            <FaBook className=" dark:text-white text-black hover:text-[#6e6e6e]  text-3xl hover:scale-125 cursor-pointer" />
           </a>
         </div>
-        <div className="sm:text-1xl dark:text-white text-[#162255] hover:text-[#1b39b2]">
+        <div className="text-sm   dark:text-white text-[#162255] hover:text-[#1b39b2]">
           <a href="https://www.agustin.top" target="_blank">
             Dev with love by Agustín Avellaneda
           </a>
