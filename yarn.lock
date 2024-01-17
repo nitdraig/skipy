@@ -2851,6 +2851,11 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
+dotenv@^16.3.1:
+  version "16.3.1"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.3.1.tgz#369034de7d7e5b120972693352a3bf112172cc3e"
+  integrity sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==
+
 eastasianwidth@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/eastasianwidth/-/eastasianwidth-0.2.0.tgz#696ce2ec0aa0e6ea93a397ffcf24aa7840c827cb"
@@ -3573,11 +3578,6 @@ https-proxy-agent@^7.0.1:
   dependencies:
     agent-base "^7.0.2"
     debug "4"
-
-i@^0.3.7:
-  version "0.3.7"
-  resolved "https://registry.yarnpkg.com/i/-/i-0.3.7.tgz#2a7437a923d59c14b17243dc63a549af24d85799"
-  integrity sha512-FYz4wlXgkQwIPqhzC5TdNMLSE5+GS1IIDJZY/1ZiEPCT2S3COUVZeT5OW4BmW4r5LHLQuOosSwsvnroG9GR59Q==
 
 iconv-lite@^0.6.2:
   version "0.6.3"
@@ -4966,7 +4966,7 @@ promzard@^1.0.0:
   dependencies:
     read "^2.0.0"
 
-prop-types@^15.6.0, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -5002,20 +5002,6 @@ react-dom@^18:
   dependencies:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
-
-react-download-link@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/react-download-link/-/react-download-link-2.3.0.tgz#5b03e475bf12e6587d4a003ed146ce313f811c0d"
-  integrity sha512-0aoj2DJFBfiD9jtdIn+WAseO1GSYmgkB5y5Ljt3DeC7j1RUlx0rR5y4S+wZwdxGhvgFogCzyh5Pa4W4YE+Pg/Q==
-  dependencies:
-    prop-types "^15.6.0"
-
-react-feather@^2.0.10:
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/react-feather/-/react-feather-2.0.10.tgz#0e9abf05a66754f7b7bb71757ac4da7fb6be3b68"
-  integrity sha512-BLhukwJ+Z92Nmdcs+EMw6dy1Z/VLiJTzEQACDUEnWMClhYnFykJCGWQx+NmwP/qQHGX/5CzQ+TGi8ofg2+HzVQ==
-  dependencies:
-    prop-types "^15.7.2"
 
 react-icons@^5.0.1:
   version "5.0.1"

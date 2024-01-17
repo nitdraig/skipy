@@ -9,13 +9,11 @@ const RedirectPage = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(`/api/unshorter?slug=${slug}`);
-        const data = await response.json(); // Parsear la respuesta como JSON
+        const data = await response.json();
 
         if (response.ok && data.originalUrl) {
-          // Si la respuesta es exitosa y contiene una URL, realiza la redirección
           window.location.replace(data.originalUrl);
         } else {
-          // Manejar el caso en que la respuesta no es exitosa
           console.error("Error en la respuesta:", response.statusText);
         }
       } catch (error) {

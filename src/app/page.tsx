@@ -6,7 +6,7 @@ import Nav from "./components/Navbar";
 import Footer from "./components/Footer";
 
 export default function Home() {
-  const darkMode = useDarkMode(true);
+  const darkMode = useDarkMode(false);
 
   return (
     <main

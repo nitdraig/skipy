@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import Link from "../models/Link";
 
-mongoose.connect("mongodb://localhost:27017/linkshortener", {
+mongoose.connect(process.env.MONGODB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

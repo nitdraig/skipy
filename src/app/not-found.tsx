@@ -23,7 +23,7 @@ export default function NotFound() {
             stroke="#6E6E96"
             strokeLinecap="round"
             strokeLinejoin="round"
-            stroke-width="8"
+            strokeWidth="8"
             x1="88.866"
             x2="136.866"
             y1="245.135"
@@ -36,7 +36,7 @@ export default function NotFound() {
             stroke="#6E6E96"
             strokeLinecap="round"
             strokeLinejoin="round"
-            stroke-width="8"
+            strokeWidth="8"
             x1="154.732"
             x2="168.732"
             y1="245.135"
@@ -49,7 +49,7 @@ export default function NotFound() {
             stroke="#6E6E96"
             strokeLinecap="round"
             strokeLinejoin="round"
-            stroke-width="8"
+            strokeWidth="8"
             x1="69.732"
             x2="58.732"
             y1="245.135"
@@ -91,7 +91,7 @@ export default function NotFound() {
             fill="none"
             r="109"
             stroke="#6E6E96"
-            stroke-width="8"
+            strokeWidth="8"
           />
         </svg>
         <div className=" tracking-widest mt-4">
