@@ -16,6 +16,7 @@ export const InputShorter = () => {
   const [copiedMessage, setCopiedMessage] = useState("");
   const [error, setError] = useState("");
   const { value: isDarkMode } = useDarkMode(true);
+  const API_ENDPOINT = "http://localhost:5000/api/shorter";
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const shortenUrl = async () => {
     if (!originalUrl.trim()) {
@@ -23,17 +24,27 @@ export const InputShorter = () => {
       return;
     }
 
-    const response = await fetch("/api/shorter", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ originalUrl }),
-    });
+    try {
+      const response = await fetch(API_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ originalUrl }),
+      });
 
-    const data = await response.json();
-    setShortenedUrl(data.shortenedUrl);
-    setError("");
+      const data = await response.json();
+
+      if (response.ok && data.shortenedUrl) {
+        setShortenedUrl(data.shortenedUrl);
+        setError("");
+      } else {
+        setError("Error al acortar la URL");
+      }
+    } catch (error) {
+      console.error("Error al realizar la solicitud:", error);
+      setError("Error de red");
+    }
   };
 
   const copyToClipboard = () => {

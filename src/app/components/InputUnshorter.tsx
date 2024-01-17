@@ -28,7 +28,7 @@ export const InputUnShorter = () => {
       return;
     }
 
-    const response = await fetch("/api/shorter", {
+    const response = await fetch("http://localhost:5000/api/shorter", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -64,7 +64,7 @@ export const InputUnShorter = () => {
 
     const slug = shortenedUrl.substring(shortenedUrl.lastIndexOf("/") + 1);
 
-    const response = await fetch(`/api/unshorter?slug=${slug}`, {
+    const response = await fetch(`http://localhost:5000/shorter/${slug}`, {
       method: "GET",
     });
 
