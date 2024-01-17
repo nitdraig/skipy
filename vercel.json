@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "pages/api.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["pages/**"]
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/pages/api.js"
+    }
+  ]
+}
