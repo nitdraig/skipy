@@ -4,6 +4,7 @@ import LinkModel from "../../app/models/LinkModel";
 mongoose.connect(process.env.MONGODB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  bufferMaxEntries: 0,
 });
 
 export default async function handler(req, res) {
