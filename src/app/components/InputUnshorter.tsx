@@ -29,7 +29,7 @@ export const InputUnShorter = () => {
     }
 
     const response = await fetch(
-      "https://abstract-bree-nitdraig.koyeb.app/api/shorter",
+      "https://skipy-back.onrender.com/api/shorter",
       {
         method: "POST",
         headers: {

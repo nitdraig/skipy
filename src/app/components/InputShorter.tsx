@@ -16,7 +16,6 @@ export const InputShorter = () => {
   const [copiedMessage, setCopiedMessage] = useState("");
   const [error, setError] = useState("");
   const { value: isDarkMode } = useDarkMode(true);
-  const API_ENDPOINT = "https://abstract-bree-nitdraig.koyeb.app/api/shorter";
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const shortenUrl = async () => {
     if (!originalUrl.trim()) {
@@ -25,13 +24,16 @@ export const InputShorter = () => {
     }
 
     try {
-      const response = await fetch(API_ENDPOINT, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ originalUrl }),
-      });
+      const response = await fetch(
+        "https://skipy-back.onrender.com/api/shorter",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ originalUrl }),
+        }
+      );
 
       const data = await response.json();
 

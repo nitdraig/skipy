@@ -4,13 +4,11 @@ import { useRouter } from "next/router";
 const RedirectPage = () => {
   const router = useRouter();
   const { slug } = router.query;
-  const API = process.env.BACK_END;
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `https://abstract-bree-nitdraig.koyeb.app/${slug}`
-        );
+        const response = await fetch(`https://skipy-back.onrender.com/${slug}`);
 
         if (response.ok) {
           const data = await response.json();
