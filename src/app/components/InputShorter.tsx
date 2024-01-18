@@ -24,16 +24,13 @@ export const InputShorter = () => {
     }
 
     try {
-      const response = await fetch(
-        "https://skipy-back.onrender.com/api/shorter",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ originalUrl }),
-        }
-      );
+      const response = await fetch("https://skipy-be.vercel.app/api/shorter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ originalUrl }),
+      });
 
       const data = await response.json();
 

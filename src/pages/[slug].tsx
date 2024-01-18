@@ -8,7 +8,7 @@ const RedirectPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://skipy-back.onrender.com/${slug}`);
+        const response = await fetch(`https://skipy-be.vercel.app/${slug}`);
 
         if (response.ok) {
           const data = await response.json();
