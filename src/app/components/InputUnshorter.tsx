@@ -28,13 +28,16 @@ export const InputUnShorter = () => {
       return;
     }
 
-    const response = await fetch("http://localhost:5000/api/shorter", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ originalUrl }),
-    });
+    const response = await fetch(
+      "https://abstract-bree-nitdraig.koyeb.app/api/shorter",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ originalUrl }),
+      }
+    );
 
     const data = await response.json();
     setShortenedUrl(data.shortenedUrl);

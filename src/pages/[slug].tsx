@@ -8,7 +8,9 @@ const RedirectPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/${slug}`);
+        const response = await fetch(
+          `https://abstract-bree-nitdraig.koyeb.app/${slug}`
+        );
 
         if (response.ok) {
           const data = await response.json();

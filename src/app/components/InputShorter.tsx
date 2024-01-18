@@ -16,7 +16,7 @@ export const InputShorter = () => {
   const [copiedMessage, setCopiedMessage] = useState("");
   const [error, setError] = useState("");
   const { value: isDarkMode } = useDarkMode(true);
-  const API_ENDPOINT = "http://localhost:5000/api/shorter";
+  const API_ENDPOINT = "https://abstract-bree-nitdraig.koyeb.app/api/shorter";
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const shortenUrl = async () => {
     if (!originalUrl.trim()) {
