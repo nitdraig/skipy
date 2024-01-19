@@ -50,5 +50,4 @@ If you have any feedback, please reach out to us at https://skipy.canny.io/suger
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
-=======
 
