@@ -29,7 +29,7 @@ export const InputShorter = () => {
 
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/shorter`,
+        `${process.env.NEXT_PUBLIC_API_URL}api/shorter`,
         {
           method: "POST",
           headers: {

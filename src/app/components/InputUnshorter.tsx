@@ -49,7 +49,7 @@ export const InputUnShorter = () => {
     try {
       console.log("Antes de la llamada a la API");
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/shorter/${slug}`,
+        `${process.env.NEXT_PUBLIC_API_URL}api/shorter/${slug}`,
         {
           method: "GET",
         }

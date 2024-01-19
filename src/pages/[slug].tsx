@@ -8,7 +8,7 @@ const RedirectPage = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/shorter/${slug}`
+          `${process.env.NEXT_PUBLIC_API_URL}api/shorter/${slug}`
         );
 
         if (response.ok) {
