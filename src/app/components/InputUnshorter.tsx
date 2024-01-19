@@ -47,7 +47,6 @@ export const InputUnShorter = () => {
     const slug = shortenedUrl.substring(shortenedUrl.lastIndexOf("/") + 1);
 
     try {
-      console.log("Antes de la llamada a la API");
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}api/shorter/${slug}`,
         {
