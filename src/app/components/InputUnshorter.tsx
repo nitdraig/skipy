@@ -65,7 +65,7 @@ export const InputUnShorter = () => {
       setOriginalUrl(data.redirectedUrl);
       setError("");
     } catch (error) {
-      console.error("Error al expandir la URL:", error);
+      console.error("Error al expandir la URL:");
       setError("Error al expandir la URL");
       setOriginalUrl("");
     }

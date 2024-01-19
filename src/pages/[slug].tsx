@@ -17,16 +17,13 @@ const RedirectPage = () => {
           if (data.redirectedUrl) {
             window.location.href = data.redirectedUrl;
           } else {
-            console.error(
-              "Error en la respuesta:",
-              data.error || response.statusText
-            );
+            console.error("Error en la respuesta");
           }
         } else {
-          console.error("Error en la respuesta:", response.statusText);
+          console.error("Error en la respuesta");
         }
       } catch (error) {
-        console.error("Error al realizar la solicitud:", error);
+        console.error("Error al realizar la solicitud");
       }
     };
 

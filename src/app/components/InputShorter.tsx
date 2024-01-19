@@ -48,7 +48,7 @@ export const InputShorter = () => {
         setError("Error al acortar la URL");
       }
     } catch (error) {
-      console.error("Error al realizar la solicitud:", error);
+      console.error("Error al realizar la solicitud");
       setError("Error de red");
     }
   };
