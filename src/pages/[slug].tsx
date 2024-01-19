@@ -4,11 +4,12 @@ import { useRouter } from "next/router";
 const RedirectPage = () => {
   const router = useRouter();
   const { slug } = router.query;
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://skipy-be.vercel.app/${slug}`);
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/shorter/${slug}`
+        );
 
         if (response.ok) {
           const data = await response.json();

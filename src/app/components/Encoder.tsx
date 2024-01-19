@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import punycode from "punycode";
 import {
   Modal,
   ModalContent,
   ModalHeader,
-  Input,
-  Slider,
   ModalBody,
   ModalFooter,
   Button,
@@ -16,6 +13,7 @@ import {
 } from "@nextui-org/react";
 import useDarkMode from "use-dark-mode";
 import { encryptingTypes } from "./../constants/encryptingTypes";
+import { ImgColorBlack, ImgColorWhite } from "./encoder/SVGEncoder";
 const EncoderDecoder = () => {
   const [input, setInput] = useState("");
   const [result, setResult] = useState("");
@@ -36,8 +34,8 @@ const EncoderDecoder = () => {
         setResult(
           input
             .split("")
-            .map((char) => char.charCodeAt(0).toString(2))
-            .join(" ")
+            .map((char) => char.charCodeAt(0).toString(2).padStart(8, "0"))
+            .join(" ") // Usa .join("") en lugar de .join(" ") para evitar separadores
         );
         break;
       case "rot13":
@@ -48,7 +46,6 @@ const EncoderDecoder = () => {
           })
         );
         break;
-
       default:
         setResult("Seleccione un tipo de codificación válido.");
     }
@@ -78,12 +75,10 @@ const EncoderDecoder = () => {
           })
         );
         break;
-
       default:
         setResult("Seleccione un tipo de codificación válido.");
     }
   };
-
   const handleInputChange = (event: any) => {
     setInput(event.target.value);
     setResult("");
@@ -107,60 +102,7 @@ const EncoderDecoder = () => {
       }
     );
   };
-  const ImgColorBlack = () => {
-    return (
-      <svg
-        viewBox="0 0 24 24"
-        width="5em"
-        height="5em"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-        <g
-          id="SVGRepo_tracerCarrier"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        ></g>
-        <g id="SVGRepo_iconCarrier">
-          <path
-            d="M20 10V6.8C20 5.11984 20 4.27976 19.673 3.63803C19.3854 3.07354 18.9265 2.6146 18.362 2.32698C17.7202 2 16.8802 2 15.2 2H8.8C7.11984 2 6.27976 2 5.63803 2.32698C5.07354 2.6146 4.6146 3.07354 4.32698 3.63803C4 4.27976 4 5.11984 4 6.8V17.2C4 18.8802 4 19.7202 4.32698 20.362C4.6146 20.9265 5.07354 21.3854 5.63803 21.673C6.27976 22 7.11984 22 8.8 22H12.5M18 21C18 21 21 19.5701 21 17.4252V14.9229L18.8124 14.1412C18.2868 13.9529 17.712 13.9529 17.1864 14.1412L15 14.9229V17.4252C15 19.5701 18 21 18 21Z"
-            stroke="#000000"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          ></path>
-        </g>
-      </svg>
-    );
-  };
-  const ImgColorWhite = () => {
-    return (
-      <svg
-        viewBox="0 0 24 24"
-        width="5em"
-        height="5em"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-        <g
-          id="SVGRepo_tracerCarrier"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        ></g>
-        <g id="SVGRepo_iconCarrier">
-          <path
-            d="M20 10V6.8C20 5.11984 20 4.27976 19.673 3.63803C19.3854 3.07354 18.9265 2.6146 18.362 2.32698C17.7202 2 16.8802 2 15.2 2H8.8C7.11984 2 6.27976 2 5.63803 2.32698C5.07354 2.6146 4.6146 3.07354 4.32698 3.63803C4 4.27976 4 5.11984 4 6.8V17.2C4 18.8802 4 19.7202 4.32698 20.362C4.6146 20.9265 5.07354 21.3854 5.63803 21.673C6.27976 22 7.11984 22 8.8 22H12.5M18 21C18 21 21 19.5701 21 17.4252V14.9229L18.8124 14.1412C18.2868 13.9529 17.712 13.9529 17.1864 14.1412L15 14.9229V17.4252C15 19.5701 18 21 18 21Z"
-            stroke="#ffffff"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          ></path>
-        </g>
-      </svg>
-    );
-  };
+
   const imgComponent = isDarkMode ? <ImgColorBlack /> : <ImgColorWhite />;
   return (
     <>
@@ -181,6 +123,7 @@ const EncoderDecoder = () => {
         </div>
       </a>
       <Modal
+        size="lg"
         backdrop="opaque"
         isOpen={isOpen}
         onOpenChange={onOpenChange}
@@ -212,11 +155,10 @@ const EncoderDecoder = () => {
                 Herramienta de Codificación/Decodificación
               </ModalHeader>
               <ModalBody>
-                <div className="px-4   items-center  sm:justify-center">
+                <div className="px-4 items-center sm:justify-center">
                   <div className="w-full mt-10">
                     <label>Tipo de Codificación:</label>
-
-                    <div className="flex items-center">
+                    <div className="flex items-center ">
                       <Select
                         placeholder="Seleccionar"
                         onChange={handleEncodingTypeChange}
@@ -229,58 +171,57 @@ const EncoderDecoder = () => {
                         ))}
                       </Select>
                     </div>
-
                     <Textarea
-                      className="mt-6 "
+                      className="mt-4"
                       value={input}
                       label=""
                       onChange={handleInputChange}
                       placeholder="Ingrese el texto aquí"
                     />
-                    <button
-                      onClick={encodeText}
-                      type="submit"
-                      className="group relative h-10 w-full mt-3 sm:w-40 overflow-hidden rounded-[7px] bg-[#162255] text-sm font-bold text-white"
-                    >
-                      Codificar
-                      <div className="absolute inset-0 h-full w-full scale-0 rounded-[7px] transition-all duration-300 group-hover:scale-100 group-hover:bg-white/30"></div>
-                    </button>
-                    <button
-                      onClick={decodeText}
-                      type="submit"
-                      className="group relative h-10 w-full mt-3 sm:w-40 overflow-hidden rounded-[7px] bg-[#162255] text-sm font-bold text-white"
-                    >
-                      Decodificar
-                      <div className="absolute inset-0 h-full w-full scale-0 rounded-[7px] transition-all duration-300 group-hover:scale-100 group-hover:bg-white/30"></div>
-                    </button>
+                    <div className="text-center">
+                      <button
+                        onClick={encodeText}
+                        type="submit"
+                        className="group relative h-10 w-full mt-3  overflow-hidden rounded-[7px] bg-[#162255] text-sm font-bold text-white"
+                      >
+                        Codificar
+                        <div className="absolute inset-0 h-full w-full scale-0 rounded-[7px] transition-all duration-300 group-hover:scale-100 group-hover:bg-white/30"></div>
+                      </button>
+                      <button
+                        onClick={decodeText}
+                        type="submit"
+                        className="group relative h-10 w-full mt-3  overflow-hidden rounded-[7px] bg-[#91c1ff] text-sm font-bold text-black"
+                      >
+                        Decodificar
+                        <div className="absolute inset-0 h-full w-full scale-0 rounded-[7px] transition-all duration-300 group-hover:scale-100 group-hover:bg-white/30"></div>
+                      </button>
+                    </div>
                   </div>
 
                   {result && (
-                    <div className="relative mt-6 h-36 w-full flex flex-col rounded-xl dark:bg-white bg-black bg-clip-border text-gray-700 shadow-md">
-                      <div className="p-6">
-                        <h5 className="mb-2 block font-sans text-xl dark:text-black text-white font-semibold leading-snug tracking-normal antialiased">
-                          Texto encriptado: {result}
-                        </h5>
-
-                        <div className="flex items-center">
-                          <button
-                            className="flex select-none items-center gap-2 rounded-lg py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-pink-500 transition-all hover:bg-pink-500/10 active:bg-pink-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                            onClick={copyToClipboard}
-                          >
-                            {copiedMessage ? (
-                              <span className="mr-2">{copiedMessage}</span>
-                            ) : (
-                              <span>Copiar</span>
-                            )}
-                            <img
-                              width="28"
-                              height="28"
-                              className="bg-white dark:text-black"
-                              src="https://img.icons8.com/material-sharp/48/copy.png"
-                              alt="copy"
-                            />
-                          </button>
-                        </div>
+                    <div className="relative mt-6 w-full flex flex-col rounded-xl bg-white items-center  bg-clip-border text-gray-700 shadow-md">
+                      <h5 className="mb-2 block font-sans text-xl text-black  font-semibold leading-snug tracking-normal antialiased">
+                        Texto encriptado:
+                      </h5>
+                      <p>{result}</p>
+                      <div className="pt-1 ">
+                        <button
+                          className="flex select-none items-center gap-2 rounded-lg py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-[#91c1ff] transition-all hover:bg-pink-500/10 active:bg-pink-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                          onClick={copyToClipboard}
+                        >
+                          {copiedMessage ? (
+                            <span className="mr-2">{copiedMessage}</span>
+                          ) : (
+                            <span>Copiar</span>
+                          )}
+                          <img
+                            width="28"
+                            height="28"
+                            className="bg-white dark:text-black"
+                            src="https://img.icons8.com/material-sharp/48/copy.png"
+                            alt="copy"
+                          />
+                        </button>
                       </div>
                     </div>
                   )}
@@ -288,7 +229,7 @@ const EncoderDecoder = () => {
               </ModalBody>
               <ModalFooter>
                 <Button color="primary" variant="light" onPress={onClose}>
-                  Close
+                  Cerrar
                 </Button>
               </ModalFooter>
             </>

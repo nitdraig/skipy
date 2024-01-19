@@ -3,7 +3,6 @@ import {
   Modal,
   ModalContent,
   ModalHeader,
-  Input,
   Slider,
   ModalBody,
   ModalFooter,
@@ -11,6 +10,11 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import useDarkMode from "use-dark-mode";
+import {
+  ImgColorBlack,
+  ImgColorWhite,
+} from "./passwordgenerator/SVGPasswordGenerator";
+import PasswordDisplay from "./passwordgenerator/PasswordDisplay";
 
 const PasswordGenerator = () => {
   const [password, setPassword] = useState("");
@@ -48,61 +52,7 @@ const PasswordGenerator = () => {
       }
     );
   };
-  const ImgColorBlack = () => {
-    return (
-      <svg
-        viewBox="0 0 24 24"
-        width="5em"
-        height="5em"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-        <g
-          id="SVGRepo_tracerCarrier"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        ></g>
-        <g id="SVGRepo_iconCarrier">
-          <path
-            d="M9 12L11 14L15 9.99999M20 12C20 16.4611 14.54 19.6937 12.6414 20.683C12.4361 20.79 12.3334 20.8435 12.191 20.8712C12.08 20.8928 11.92 20.8928 11.809 20.8712C11.6666 20.8435 11.5639 20.79 11.3586 20.683C9.45996 19.6937 4 16.4611 4 12V8.21759C4 7.41808 4 7.01833 4.13076 6.6747C4.24627 6.37113 4.43398 6.10027 4.67766 5.88552C4.9535 5.64243 5.3278 5.50207 6.0764 5.22134L11.4382 3.21067C11.6461 3.13271 11.75 3.09373 11.857 3.07827C11.9518 3.06457 12.0482 3.06457 12.143 3.07827C12.25 3.09373 12.3539 3.13271 12.5618 3.21067L17.9236 5.22134C18.6722 5.50207 19.0465 5.64243 19.3223 5.88552C19.566 6.10027 19.7537 6.37113 19.8692 6.6747C20 7.01833 20 7.41808 20 8.21759V12Z"
-            stroke="#000000"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          ></path>
-        </g>
-      </svg>
-    );
-  };
 
-  const ImgColorWhite = () => {
-    return (
-      <svg
-        viewBox="0 0 24 24"
-        width="5em"
-        height="5em"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-        <g
-          id="SVGRepo_tracerCarrier"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        ></g>
-        <g id="SVGRepo_iconCarrier">
-          <path
-            d="M9 12L11 14L15 9.99999M20 12C20 16.4611 14.54 19.6937 12.6414 20.683C12.4361 20.79 12.3334 20.8435 12.191 20.8712C12.08 20.8928 11.92 20.8928 11.809 20.8712C11.6666 20.8435 11.5639 20.79 11.3586 20.683C9.45996 19.6937 4 16.4611 4 12V8.21759C4 7.41808 4 7.01833 4.13076 6.6747C4.24627 6.37113 4.43398 6.10027 4.67766 5.88552C4.9535 5.64243 5.3278 5.50207 6.0764 5.22134L11.4382 3.21067C11.6461 3.13271 11.75 3.09373 11.857 3.07827C11.9518 3.06457 12.0482 3.06457 12.143 3.07827C12.25 3.09373 12.3539 3.13271 12.5618 3.21067L17.9236 5.22134C18.6722 5.50207 19.0465 5.64243 19.3223 5.88552C19.566 6.10027 19.7537 6.37113 19.8692 6.6747C20 7.01833 20 7.41808 20 8.21759V12Z"
-            stroke="#ffffff"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          ></path>
-        </g>
-      </svg>
-    );
-  };
   const imgComponent = isDarkMode ? <ImgColorBlack /> : <ImgColorWhite />;
   return (
     <>
@@ -154,7 +104,7 @@ const PasswordGenerator = () => {
                 Generador de contraseñas
               </ModalHeader>
               <ModalBody>
-                <div className="px-4   items-center  sm:justify-center">
+                <div className="px-4 items-center  sm:justify-center">
                   <div className="w-full mt-10">
                     <label>Longitud de la Contraseña:</label>
                     <div className="flex items-center">
@@ -180,50 +130,18 @@ const PasswordGenerator = () => {
                       <div className="absolute inset-0 h-full w-full scale-0 rounded-[7px] transition-all duration-300 group-hover:scale-100 group-hover:bg-white/30"></div>
                     </button>
                   </div>
-
                   {password && (
-                    <div className="relative mt-6 h-36 w-full flex flex-col rounded-xl dark:bg-white bg-black bg-clip-border text-gray-700 shadow-md">
-                      <div className="p-6">
-                        <h5 className="mb-2 block font-sans text-xl dark:text-black text-white font-semibold leading-snug tracking-normal antialiased">
-                          Contraseña Generada:
-                        </h5>
-
-                        <div className="flex items-center">
-                          <Input
-                            type="text"
-                            color="secondary"
-                            variant="bordered"
-                            value={password}
-                            readOnly
-                            placeholder=""
-                            className="max-w-xs mr-2 text-white"
-                          />
-                          <button
-                            className="flex select-none items-center gap-2 rounded-lg py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-pink-500 transition-all hover:bg-pink-500/10 active:bg-pink-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                            onClick={copyToClipboard}
-                          >
-                            {copiedMessage ? (
-                              <span className="mr-2">{copiedMessage}</span>
-                            ) : (
-                              <span>Copiar</span>
-                            )}
-                            <img
-                              width="28"
-                              height="28"
-                              className="bg-white dark:text-black"
-                              src="https://img.icons8.com/material-sharp/48/copy.png"
-                              alt="copy"
-                            />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
+                    <PasswordDisplay
+                      password={password}
+                      copiedMessage={copiedMessage}
+                      onCopyToClipboard={copyToClipboard}
+                    />
                   )}
                 </div>
               </ModalBody>
               <ModalFooter>
                 <Button color="primary" variant="light" onPress={onClose}>
-                  Close
+                  Cerrar
                 </Button>
               </ModalFooter>
             </>
