@@ -60,8 +60,8 @@ const PasswordGenerator = () => {
         onClick={onOpen}
         className="transition-all cursor-pointer  duration-1000 dark:bg-white bg-[#1a45db]  hover:bg-[#387af9] dark:hover:bg-[#387af9] hover:shadow-xl m-2 p-4 relative z-40 group  "
       >
-        <div className="bg-[#387af9]/50 top-0 left-0 w-24 h-1 z-30  transition-all duration-200   group-hover:bg-white group-hover:w-1/2  "></div>
-        <div className="py-2 px-9 relative  ">
+        <div className="bg-[#387af9]]/50 top-0 left-0 w-24 h-1 z-30  transition-all duration-200   group-hover:bg-white group-hover:w-1/2  "></div>
+        <div className="py-2 px-9 relative">
           {imgComponent}
           <h3 className="mt-8 text-lg font-semibold text-white dark:text-black group-hover:text-white ">
             Generador de contraseñas
@@ -104,7 +104,7 @@ const PasswordGenerator = () => {
                 Generador de contraseñas
               </ModalHeader>
               <ModalBody>
-                <div className="px-4 items-center  sm:justify-center">
+                <div className="px-4 items-center sm:justify-center">
                   <div className="w-full mt-10">
                     <label>Longitud de la Contraseña:</label>
                     <div className="flex items-center">

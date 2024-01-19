@@ -26,7 +26,7 @@ const PasswordDisplay: React.FC<PasswordDisplayProps> = ({
           className="max-w-xs mr-2 text-black"
         />
         <button
-          className="flex select-none items-center gap-2 rounded-lg py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-#91c1ff transition-all hover:bg-pink-500/10 active:bg-pink-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          className="flex select-none items-center gap-2 rounded-lg py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-[#91c1ff] transition-all hover:bg-pink-500/10 active:bg-pink-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           onClick={onCopyToClipboard}
         >
           {copiedMessage ? (
