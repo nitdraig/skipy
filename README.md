@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Spiky: Your Multipurpose Tool for Developers
 
-## Getting Started
+Description: Spiky is a multi-tool application designed to make the lives of developers and IT professionals easier. Offers a variety of useful utilities for daily tasks,
+from generating shortened links to creating credit card information for testing. The application is designed to be centralized and in the future we plan to add more tools to expand its usefulness.
 
-First, run the development server:
+## Characteristics
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Shortened Link Generator:** Create shortened links quickly and easily to share URLs more efficiently.
+- **Unshorter of Links Generated in Spiky:** Unshort links generated in Spiky to obtain the original URL and better understand the source.
+- **Password Generator:** Create secure, random passwords with customization options based on your security requirements.
+- **QR Code Generator for Websites:** Converts URLs into QR codes to facilitate quick access and link sharing.
+- **Encoder in Multiple Encryption Formats:** Encodes and decodes text using binary, Base64, URL and ROT13 to adapt to various encryption needs.
+- **Information Generator:** Credit Cards for Testing Obtain simulated credit card information for testing and development without compromising real data.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Contributions:
+Contributions are welcome! If you have ideas for new tools or improvements to existing ones, please
+open an issue or submit a pull request.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Future Development
+More tools are planned to be added to Spiky to make it even more versatile and useful for developers and IT users. Stay tuned for updates!
+## Roadmap
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Correct current problems to improve the interface.
 
-## Learn More
+- Add more daily use tools.
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Author
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- [@nitdraig](https://www.github.com/nitdraig)
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Feedback
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+If you have any feedback, please reach out to us at https://skipy.canny.io/sugerencias
+
+
+## Tech Stack
+
+**Client:** Nextjs, TailwindCSS, Typescript
+
+**Server:** Node, Express
+
+
+![Logo](https://res.cloudinary.com/draig/image/upload/v1705703103/Skipy/buyvv2raasztznogzg8g.png)
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
