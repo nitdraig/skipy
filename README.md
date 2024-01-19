@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Spiky: Your Multipurpose Tool for Developers
 
 Description: Spiky is a multi-tool application designed to make the lives of developers and IT professionals easier. Offers a variety of useful utilities for daily tasks,
