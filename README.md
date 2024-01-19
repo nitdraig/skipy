@@ -1,36 +1,24 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+#Spiky: Tu Herramienta Multiusos para Desarrolladores
 
-## Getting Started
+Descripción:
+Spiky es una aplicación multi-herramienta diseñada para facilitar la vida de los desarrolladores y profesionales de IT. Ofrece una variedad de utilidades útiles para tareas diarias, desde la generación de enlaces acortados hasta la creación de información de tarjetas de crédito para pruebas. La aplicación está diseñada para ser centralizada y en el futuro se planea agregar más herramientas para ampliar su utilidad.
 
-First, run the development server:
+##Características
+1. Generador de Enlaces Acortados
+Crea enlaces acortados de forma rápida y sencilla para compartir URLs de manera más eficiente.
+2. Desacortador de Enlaces Generados en Spiky
+Desacorta enlaces generados en Spiky para obtener la URL original y entender mejor la fuente.
+3. Generador de Contraseñas
+Crea contraseñas seguras y aleatorias con opciones de personalización según tus requisitos de seguridad.
+4. Generador de Códigos QR para Sitios Web
+Convierte URLs en códigos QR para facilitar el acceso rápido y la compartición de enlaces.
+5. Codificador en Múltiples Formatos de Encriptamiento
+Codifica y decodifica texto utilizando binario, Base64, URL y ROT13 para adaptarse a diversas necesidades de encriptación.
+6. Generador de Información de Tarjetas de Crédito para Testing
+Obtén información simulada de tarjetas de crédito para pruebas y desarrollo sin comprometer datos reales.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+##Contribuciones
+¡Contribuciones son bienvenidas! Si tienes ideas para nuevas herramientas o mejoras para las existentes, por favor, abre un problema o envía una solicitud de extracción.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+##Futuro Desarrollo
+Se planea agregar más herramientas a Spiky para hacerla aún más versátil y útil para los desarrolladores y usuarios de IT. ¡Estad atentos a las actualizaciones!
