@@ -1,5 +1,5 @@
 
-# Spiky: Your Multipurpose Tool for Developers
+# Skipy: Your Multipurpose Tool for Developers
 
 Description: Spiky is a multi-tool application designed to make the lives of developers and IT professionals easier. Offers a variety of useful utilities for daily tasks,
 from generating shortened links to creating credit card information for testing. The application is designed to be centralized and in the future we plan to add more tools to expand its usefulness.
