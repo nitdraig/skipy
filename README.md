@@ -4,11 +4,9 @@
   </a>
 </p>
 <h3 align="center">Skipy | Your Multipurpose Tool for Developers</h3>
-
 <p align="center">
 An multi-tool application designed to make the lives of developers and IT professionals easier
   <br>
-
   <a href="https://github.com/nitdraig/skipy/issues">Report bug</a>
   ·
   <a href="https://github.com/nitdraig/skipy/issues">Request feature</a>
