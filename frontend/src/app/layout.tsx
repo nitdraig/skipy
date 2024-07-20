@@ -60,7 +60,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <link rel="canonical" href="https://skipy.vercel.app" />
+      <link rel="canonical" href="https://skipy.top" />
       <body className={ibm.className}>{children}</body>
     </html>
   );

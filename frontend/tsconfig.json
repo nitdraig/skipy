@@ -27,8 +27,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/pages/api/unshorter..js",
-    "src/pages/api/shorter.js"
+    "src/app/api/unshorter..js",
+    "src/app/api/shorter.js"
   ],
   "exclude": ["node_modules"]
 }
