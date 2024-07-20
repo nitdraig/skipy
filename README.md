@@ -1,3 +1,20 @@
+<p align="center">
+  <a href="https://skipy.top/">
+    <img src="https://res.cloudinary.com/draig/image/upload/v1705703103/Skipy/buyvv2raasztznogzg8g.png" alt="Skipy Logo" width="200" height="200">
+  </a>
+</p>
+<h3 align="center">Skipy | Your Multipurpose Tool for Developers</h3>
+
+<p align="center">
+An multi-tool application designed to make the lives of developers and IT professionals easier
+  <br>
+
+  <a href="https://github.com/nitdraig/skipy/issues">Report bug</a>
+  ·
+  <a href="https://github.com/nitdraig/skipy/issues">Request feature</a>
+  ·
+  <a href="https://agustin.top/">Creator Portfolio</a>
+</p>
 
 # Skipy: Your Multipurpose Tool for Developers
 
