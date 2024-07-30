@@ -56,9 +56,9 @@ If you have any feedback, please reach out to us at https://skipy.canny.io/suger
 
 ## Tech Stack
 
-**Client:** Nextjs, TailwindCSS, Typescript
+**Front-end:** Next.js, TailwindCSS, Typescript
 
-**Server:** Node, Express
+**Back-end:** Node.js, Express.js, Javascript
 
 
 ![Logo](https://res.cloudinary.com/draig/image/upload/v1705703103/Skipy/buyvv2raasztznogzg8g.png)
