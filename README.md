@@ -19,8 +19,8 @@ An multi-tool application designed to make the lives of developers and IT profes
 Description: Spiky is a multi-tool application designed to make the lives of developers and IT professionals easier. Offers a variety of useful utilities for daily tasks,
 from generating shortened links to creating credit card information for testing. The application is designed to be centralized and in the future we plan to add more tools to expand its usefulness.
 
-- **Front-end URL: www.skipy.top**
-- **Back-end URL: www.api.skipy.top**
+- **Front-end URL: https://skipy.top**
+- **Back-end URL: https://api.skipy.top**
 
 ## Characteristics
 
