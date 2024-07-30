@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
      <div style="font-family: Arial, sans-serif; text-align: center; margin-top: 50px;">
         <h1>Welcome to Skipy API </h1>
         <p>Spiky is a multi-tool application designed to make the lives of developers and IT professionals easier. Offers a variety of useful utilities for daily tasks, from generating shortened links to creating credit card information for testing. The application is designed to be centralized and in the future we plan to add more tools to expand its usefulness.<p/>
-        <p>This is the root of the API. For more information, see the <a href="https://skipy.top" style="color: #2b4c7e;">Documentation</a></p>
+        <p>This is the root of the API. For more information, see the <a href="https://github.com/nitdraig/skipy" style="color: #2b4c7e;">Documentation</a></p>
         <a href="https://skipy.top" style="color: #2b4c7e;"> -> Skipy Web <- </a>
      </div>
   `);
