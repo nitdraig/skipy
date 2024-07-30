@@ -9,11 +9,11 @@ import {
 } from "@nextui-org/react";
 import React, { useState } from "react";
 import useDarkMode from "use-dark-mode";
-import ShortenedURLDisplay from "./shorter/ShortenedURLDisplay";
-import URLInput from "./shorter/URLInputShorter";
-import { ImgColorBlack, ImgColorWhite } from "./shorter/SVGShorter";
+import ShortenedURLDisplay from "./components/ShortenedURLDisplay";
+import URLInput from "./components/URLInputShorter";
+import { ImgColorBlack, ImgColorWhite } from "./components/SVGShorter";
 
-export const InputShorter = () => {
+export const Shorter = () => {
   const [originalUrl, setOriginalUrl] = useState("");
   const [shortenedUrl, setShortenedUrl] = useState("");
   const [copiedMessage, setCopiedMessage] = useState("");

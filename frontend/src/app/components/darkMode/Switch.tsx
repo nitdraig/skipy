@@ -13,7 +13,7 @@ export default function Switcher() {
     const storedDarkMode = localStorage.getItem("darkMode");
     if (storedDarkMode !== null) {
       const storedDarkModeBool = storedDarkMode === "true";
-      darkMode.value !== storedDarkModeBool && darkMode.toggle(); // Toggle only if there's a mismatch
+      darkMode.value !== storedDarkModeBool && darkMode.toggle();
       setInitialLoad(false);
     }
   }, [darkMode]);

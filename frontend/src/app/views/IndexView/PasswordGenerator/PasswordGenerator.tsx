@@ -13,8 +13,8 @@ import useDarkMode from "use-dark-mode";
 import {
   ImgColorBlack,
   ImgColorWhite,
-} from "./passwordgenerator/SVGPasswordGenerator";
-import PasswordDisplay from "./passwordgenerator/PasswordDisplay";
+} from "./components/SVGPasswordGenerator";
+import PasswordDisplay from "./components/PasswordDisplay";
 
 const PasswordGenerator = () => {
   const [password, setPassword] = useState("");

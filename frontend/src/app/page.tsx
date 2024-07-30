@@ -1,6 +1,6 @@
 import React from "react";
-import Hero from "./components/Hero";
 import Script from "next/script";
+import IndexView from "./views/IndexView/IndexView";
 
 const googleAnalyticsId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
 
@@ -18,7 +18,7 @@ export default function Home() {
           gtag('config', '${googleAnalyticsId}');
         `}
       </Script>
-      <Hero />
+      <IndexView />
     </>
   );
 }

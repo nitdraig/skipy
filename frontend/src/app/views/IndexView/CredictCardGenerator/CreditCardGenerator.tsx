@@ -9,12 +9,8 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import useDarkMode from "use-dark-mode";
-import {
-  ImgColorBlack,
-  ImgColorWhite,
-} from "./creditcardgenerator/SVGCreditCard";
-import Image from "next/image";
-import CreditCardDetails from "./creditcardgenerator/CreditCardDetails";
+import { ImgColorBlack, ImgColorWhite } from "./components/SVGCreditCard";
+import CreditCardDetails from "./components/CreditCardDetails";
 
 const CreditCardGenerator = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();

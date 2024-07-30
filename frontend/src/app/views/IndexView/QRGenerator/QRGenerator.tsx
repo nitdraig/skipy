@@ -11,8 +11,8 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import useDarkMode from "use-dark-mode";
-import { ImgColorBlack, ImgColorWhite } from "./qrgenerator/SVGQRGenerator";
-import QRCodeGeneratorDisplay from "./qrgenerator/QRCodeGeneratorDisplay";
+import { ImgColorBlack, ImgColorWhite } from "./components/SVGQRGenerator";
+import QRCodeGeneratorDisplay from "./components/QRCodeGeneratorDisplay";
 
 const QRCodeGenerator = () => {
   const [url, setUrl] = useState("");

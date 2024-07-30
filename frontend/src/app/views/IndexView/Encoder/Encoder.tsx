@@ -12,8 +12,8 @@ import {
   Textarea,
 } from "@nextui-org/react";
 import useDarkMode from "use-dark-mode";
-import { encryptingTypes } from "./../constants/encryptingTypes";
-import { ImgColorBlack, ImgColorWhite } from "./encoder/SVGEncoder";
+import { encryptingTypes } from "../../../constants/encryptingTypes";
+import { ImgColorBlack, ImgColorWhite } from "./components/SVGEncoder";
 const EncoderDecoder = () => {
   const [input, setInput] = useState("");
   const [result, setResult] = useState("");
@@ -35,7 +35,7 @@ const EncoderDecoder = () => {
           input
             .split("")
             .map((char) => char.charCodeAt(0).toString(2).padStart(8, "0"))
-            .join(" ") // Usa .join("") en lugar de .join(" ") para evitar separadores
+            .join(" ")
         );
         break;
       case "rot13":

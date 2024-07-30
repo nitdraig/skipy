@@ -9,10 +9,10 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import useDarkMode from "use-dark-mode";
-import { ImgColorBlack, ImgColorWhite } from "./unshorter/SVGUnshorter";
-import URLInputUnshorter from "./unshorter/URLInputUnshorter";
-import UnShortenedURLDisplay from "./unshorter/UnShortenedURLDisplay";
-export const InputUnShorter = () => {
+import { ImgColorBlack, ImgColorWhite } from "./components/SVGUnshorter";
+import URLInputUnshorter from "./components/URLInputUnshorter";
+import UnShortenedURLDisplay from "./components/UnShortenedURLDisplay";
+export const UnShorter = () => {
   const [originalUrl, setOriginalUrl] = useState("");
   const [copiedMessage, setCopiedMessage] = useState("");
   const [error, setError] = useState("");
