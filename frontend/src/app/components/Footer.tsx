@@ -21,6 +21,7 @@ const Footer = () => {
           <a
             data-aos="fade-up"
             data-aos-duration="1000"
+            aria-label="Linkedin"
             href="https://www.linkedin.com/in/avellaneda-agustín-tns"
             target="_blank"
             className="box font-medium text-white   flex items-center justify-center flex-col"
@@ -31,6 +32,7 @@ const Footer = () => {
             data-aos="fade-up"
             data-aos-duration="1200"
             href="https://twitter.com/nitdraig"
+            aria-label="Twitter"
             target="_blank"
             className="box font-medium text-white  flex items-center justify-center flex-col"
           >
@@ -40,6 +42,7 @@ const Footer = () => {
             data-aos="fade-up"
             data-aos-duration="1200"
             href="https://es.blog.agustin.top"
+            aria-label="Personal Blog"
             target="_blank"
             className="box font-medium text-white  flex items-center justify-center flex-col"
           >
@@ -47,7 +50,11 @@ const Footer = () => {
           </a>
         </div>
         <div className="text-sm dark:text-white text-[#162255] hover:text-[#1b39b2]">
-          <a href="https://www.agustin.top" target="_blank">
+          <a
+            href="https://www.agustin.top"
+            aria-label="Portfolio"
+            target="_blank"
+          >
             Dev with love by Agustín Avellaneda
           </a>
         </div>

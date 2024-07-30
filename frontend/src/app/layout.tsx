@@ -41,12 +41,6 @@ export const metadata: Metadata = {
     ],
   },
 
-  robots: {
-    index: true,
-    follow: true,
-    nocache: true,
-  },
-
   openGraph: {
     images:
       "https://res.cloudinary.com/draig/image/upload/v1705458951/Skipy/cfdmbv9lwkyzxj4zmnug.png",
