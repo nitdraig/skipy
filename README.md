@@ -32,27 +32,27 @@ from generating shortened links to creating credit card information for testing.
 - **Information Generator:** Credit Cards for Testing Obtain simulated credit card information for testing and development without compromising real data.
 
 ## Contributions:
+
 Contributions are welcome! If you have ideas for new tools or improvements to existing ones, please
 open an issue or submit a pull request.
 
 ## Future Development
+
 More tools are planned to be added to Spiky to make it even more versatile and useful for developers and IT users. Stay tuned for updates!
+
 ## Roadmap
 
 - Correct current problems to improve the interface.
 
 - Add more daily use tools.
 
-
 ## Author
 
 - [@nitdraig](https://www.github.com/nitdraig)
 
-
 ## Feedback
 
 If you have any feedback, please reach out to us at https://skipy.canny.io/sugerencias
-
 
 ## Tech Stack
 
@@ -60,12 +60,8 @@ If you have any feedback, please reach out to us at https://skipy.canny.io/suger
 
 **Back-end:** Node.js, Express.js, Javascript
 
-
 ![Logo](https://res.cloudinary.com/draig/image/upload/v1705703103/Skipy/buyvv2raasztznogzg8g.png)
-
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
-
-
+[GNU GENERAL PUBLIC LICENSE](https://github.com/nitdraig/skipy?tab=LICENSE-ov-file)
