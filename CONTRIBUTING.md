@@ -23,7 +23,7 @@ Be respectful of other taxpayers. All opinions are welcome and should be treated
 Avoid massive changes without prior discussion. Big changes must be agreed upon by the community.
 Make sure your contribution solves a problem or significantly improves existing functionality.
 Code quality is essential. Follow the conventions and style guidelines established in the project.
-Contributions must be compatible with the project's MIT license.
+Contributions must be compatible with the project's GNU GENERAL PUBLIC LICENSE.
 Thanks again for your contribution.
 
 We look forward to working with you to improve Spiky and make it even more useful to the developer community!
@@ -59,7 +59,7 @@ Siéntete libre de explorar el repositorio y verifica si hay problemas abiertos 
 
 - La calidad del código es esencial. Sigue las convenciones y pautas de estilo establecidas en el proyecto.
 
-- Las contribuciones deben ser compatibles con la licencia MIT del proyecto.
-- 
+- Las contribuciones deben ser compatibles con la licencia GNU GENERAL PUBLIC LICENSE del proyecto.
+
 ## Gracias nuevamente por tu contribución. 
 ¡Esperamos trabajar contigo para mejorar Spiky y hacerlo aún más útil para la comunidad de desarrolladores!
