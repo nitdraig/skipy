@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://skipy.top/">
+  <a href="https://skipy.click/">
     <img src="https://res.cloudinary.com/draig/image/upload/v1705703103/Skipy/buyvv2raasztznogzg8g.png" alt="Skipy Logo" width="200" height="200">
   </a>
 </p>
@@ -19,8 +19,8 @@ An multi-tool application designed to make the lives of developers and IT profes
 Description: Spiky is a multi-tool application designed to make the lives of developers and IT professionals easier. Offers a variety of useful utilities for daily tasks,
 from generating shortened links to creating credit card information for testing. The application is designed to be centralized and in the future we plan to add more tools to expand its usefulness.
 
-- **Front-end URL: https://skipy.top**
-- **Back-end URL: https://api.skipy.top**
+- **Front-end URL: https://skipy.click/**
+- **Back-end URL: https://api.skipy.click**
 
 ## Characteristics
 
