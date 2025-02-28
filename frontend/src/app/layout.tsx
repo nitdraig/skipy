@@ -54,7 +54,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <link rel="canonical" href="https://skipy.top" />
+      <link rel="canonical" href="https://skipy.click" />
       <body className={ibm.className}>{children}</body>
     </html>
   );
