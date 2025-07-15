@@ -1,7 +1,7 @@
 GNU GENERAL PUBLIC LICENSE
 Version 3, 29 June 2007
 
-Copyright (C) 2024 - Agustín Avellaneda
+Copyright (C) 2025 - Agustín Avellaneda
 
 1. You may copy, distribute, and modify this software under the terms of this license.
 2. When distributing this software, you must include the source code, and you must keep this license intact.
