@@ -24,7 +24,8 @@ import { Badge } from "@/components/ui/badge";
 import { CreditCard } from "lucide-react";
 
 import { toast } from "react-toastify";
-import { cardVariants } from "@/components/Motion-Variants";
+import { cardVariants } from "@/hooks/Motion-Variants";
+
 const CreditCardGenerator = () => {
   const [cardType, setCardType] = useState("visa");
   const [cardNumber, setCardNumber] = useState("");

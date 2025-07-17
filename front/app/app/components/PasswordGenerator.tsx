@@ -1,4 +1,3 @@
-import { cardVariants } from "@/components/Motion-Variants";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -11,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
+import { cardVariants } from "@/hooks/Motion-Variants";
 import { AnimatePresence, motion } from "framer-motion";
 import { Copy, Shield } from "lucide-react";
 

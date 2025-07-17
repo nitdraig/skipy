@@ -25,51 +25,12 @@ import {
 import Image from "next/image";
 import NextLink from "next/link";
 import { motion } from "framer-motion";
-
-const containerVariants: any = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants: any = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut",
-    },
-  },
-};
-
-const cardHoverVariants: any = {
-  hover: {
-    scale: 1.02,
-    y: -5,
-    transition: {
-      duration: 0.2,
-      ease: "easeOut",
-    },
-  },
-};
-
-const floatingVariants: any = {
-  animate: {
-    y: [-10, 10, -10],
-    transition: {
-      duration: 4,
-      repeat: Number.POSITIVE_INFINITY,
-      ease: "easeInOut",
-    },
-  },
-};
+import {
+  cardHoverVariants,
+  containerVariants,
+  floatingVariants,
+  itemVariants,
+} from "@/hooks/Motion-Variants";
 
 export default function LandingPage() {
   const tools = [
@@ -141,8 +102,6 @@ export default function LandingPage() {
           }}
         />
       </div>
-
-      {/* Header */}
 
       {/* Hero Section */}
       <section className="container space-y-6 py-8 md:py-12 lg:py-24 relative">
@@ -375,7 +334,6 @@ export default function LandingPage() {
                   <div className="flex items-center justify-between">
                     <CardTitle className="text-lg">{item.name}</CardTitle>
                     <motion.div
-                      //   animate={{ pulse: [1, 1.1, 1] }}
                       transition={{
                         duration: 2,
                         repeat: Number.POSITIVE_INFINITY,
@@ -438,8 +396,6 @@ export default function LandingPage() {
           </motion.div>
         </motion.div>
       </section>
-
-      {/* Footer */}
     </div>
   );
 }

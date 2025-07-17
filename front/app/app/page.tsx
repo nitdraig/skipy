@@ -13,15 +13,17 @@ import {
 import LinkShortener from "./components/LinkShorter";
 import PasswordGenerator from "./components/PasswordGenerator";
 import QRGenerator from "./components/QRGenerator";
-import EncoderDecoder from "./components/EncoderDecoder";
+
 import CreditCardGenerator from "./components/CreditCardGenerator";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { pageTransition, pageVariants } from "@/components/Motion-Variants";
+
+import EncoderDecoder from "./components/EncoderDecoder";
+import { pageTransition, pageVariants } from "@/hooks/Motion-Variants";
 
 const tools = [
   { id: "link-shortener", name: "Short Link Generator", icon: Link },
-  { id: "link-unshortener", name: "Link Unshortener", icon: ExternalLink },
+  //   { id: "link-unshortener", name: "Link Unshortener", icon: ExternalLink },
   { id: "password-generator", name: "Password Generator", icon: Shield },
   { id: "qr-generator", name: "QR Code Generator", icon: QrCode },
   { id: "encoder-decoder", name: "Encoder/Decoder", icon: Code },

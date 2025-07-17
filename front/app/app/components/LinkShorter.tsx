@@ -12,7 +12,7 @@ import { Copy, Link } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { cardVariants } from "@/components/Motion-Variants";
+import { cardVariants } from "@/hooks/Motion-Variants";
 
 const LinkShortener = () => {
   const [url, setUrl] = useState("");
@@ -20,18 +20,38 @@ const LinkShortener = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleShorten = async () => {
-    if (!url) return;
+    if (!url.trim()) {
+      toast.error("¡Debes ingresar una URL!");
+      return;
+    }
+
     setIsLoading(true);
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/url-shorter/shorter`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ originalUrl: url }),
+        },
+      );
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+      const data = await response.json();
 
-    const shortened = `https://skipy.dev/${Math.random()
-      .toString(36)
-      .substr(2, 8)}`;
-    setShortUrl(shortened);
-    setIsLoading(false);
-    toast("Link shortened successfully!");
+      if (!response.ok || !data.shortenedUrl) {
+        throw new Error(data.message || "Error al acortar la URL");
+      }
+
+      setShortUrl(data.shortenedUrl);
+      toast.success("¡URL acortada correctamente!");
+    } catch (error: any) {
+      console.error("Error al acortar la URL:", error);
+      toast.error(error.message || "Error inesperado");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const copyToClipboard = (text: string) => {

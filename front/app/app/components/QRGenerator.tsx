@@ -15,7 +15,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Link, QrCode, Download } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "react-toastify";
-import { cardVariants } from "@/components/Motion-Variants";
+import { cardVariants } from "@/hooks/Motion-Variants";
 
 const QRGenerator = () => {
   const [text, setText] = useState("");
