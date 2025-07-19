@@ -378,7 +378,7 @@ export default function LandingPage() {
               whileTap={{ scale: 0.95 }}
             >
               <Button size="lg" asChild>
-                <NextLink href="https://github.com">
+                <NextLink href="https://github.com/nitdraig/skipy">
                   <Github className="mr-2 h-4 w-4" />
                   View on GitHub
                 </NextLink>
