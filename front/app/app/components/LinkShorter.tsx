@@ -21,7 +21,7 @@ const LinkShortener = () => {
 
   const handleShorten = async () => {
     if (!url.trim()) {
-      toast.error("¡Debes ingresar una URL!");
+      toast.error("Please enter a URL to shorten!");
       return;
     }
 
@@ -41,14 +41,14 @@ const LinkShortener = () => {
       const data = await response.json();
 
       if (!response.ok || !data.shortenedUrl) {
-        throw new Error(data.message || "Error al acortar la URL");
+        throw new Error(data.message || "Error to shorten the URL");
       }
 
       setShortUrl(data.shortenedUrl);
-      toast.success("¡URL acortada correctamente!");
+      toast.success("Url shortened correctly!");
     } catch (error: any) {
-      console.error("Error al acortar la URL:", error);
-      toast.error(error.message || "Error inesperado");
+      console.error("Error to shorten the URL:", error);
+      toast.error(error.message || "Error to shorten the URL");
     } finally {
       setIsLoading(false);
     }

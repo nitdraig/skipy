@@ -12,7 +12,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
-import { Link, QrCode, Download } from "lucide-react";
+import { QrCode, Download } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "react-toastify";
 import { cardVariants } from "@/hooks/Motion-Variants";
@@ -23,11 +23,9 @@ const QRGenerator = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [qrDataUrl, setQrDataUrl] = useState("");
 
-  // Función para normalizar URL (agregar protocolo si no lo tiene)
   const normalizeUrl = (input: string): string => {
     const trimmedInput = input.trim();
 
-    // Si parece ser una URL pero no tiene protocolo, agregar https://
     if (
       trimmedInput.includes(".") &&
       !trimmedInput.startsWith("http://") &&
@@ -55,15 +53,12 @@ const QRGenerator = () => {
     setIsGenerating(true);
 
     try {
-      // Normalizar el texto si parece ser una URL
       const processedText = normalizeUrl(text);
 
-      // Usar QR Server API (servicio gratuito)
       const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${encodeURIComponent(
         processedText,
       )}`;
 
-      // Verificar que la imagen se puede cargar
       const img = new Image();
       img.crossOrigin = "anonymous";
 
@@ -84,12 +79,10 @@ const QRGenerator = () => {
     }
   };
 
-  // Función para generar nombre de archivo basado en el contenido
   const generateFileName = (input: string): string => {
     const processedText = normalizeUrl(input.trim());
 
     try {
-      // Si es una URL, extraer el dominio
       if (
         processedText.startsWith("http://") ||
         processedText.startsWith("https://")
@@ -97,7 +90,6 @@ const QRGenerator = () => {
         const url = new URL(processedText);
         let domain = url.hostname.replace("www.", "");
 
-        // Si tiene path, incluirlo también (limitado)
         if (url.pathname && url.pathname !== "/") {
           const path = url.pathname
             .replace(/[^a-zA-Z0-9-_]/g, "-")
@@ -108,19 +100,17 @@ const QRGenerator = () => {
         return `qr-${domain.replace(/[^a-zA-Z0-9-_]/g, "-")}.png`;
       }
 
-      // Si no es URL, usar las primeras palabras del texto
       const cleanText = processedText
-        .replace(/[^a-zA-Z0-9\s]/g, "") // Remover caracteres especiales
+        .replace(/[^a-zA-Z0-9\s]/g, "")
         .trim()
-        .split(/\s+/) // Dividir por espacios
-        .slice(0, 3) // Tomar máximo 3 palabras
+        .split(/\s+/)
+        .slice(0, 3)
         .join("-")
         .toLowerCase()
-        .substring(0, 30); // Limitar longitud
+        .substring(0, 30);
 
       return cleanText ? `qr-${cleanText}.png` : "qr-code.png";
     } catch (error) {
-      // Fallback si hay error procesando
       return "qr-code.png";
     }
   };
@@ -129,10 +119,8 @@ const QRGenerator = () => {
     if (!qrDataUrl) return;
 
     try {
-      // Generar nombre de archivo basado en el contenido
       const fileName = generateFileName(text);
 
-      // Crear un canvas para convertir la imagen a blob
       const img = new Image();
       img.crossOrigin = "anonymous";
 

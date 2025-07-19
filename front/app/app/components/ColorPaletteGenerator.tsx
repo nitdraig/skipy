@@ -68,7 +68,18 @@ const ColorPaletteGenerator = () => {
       <Card className="border-2 hover:border-primary/20 transition-colors duration-300">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <EyeIcon className="h-5 w-5" /> Color Palette Generator
+            {" "}
+            <motion.div
+              animate={{ rotate: [0, 90, 180, 270, 360] }}
+              transition={{
+                duration: 4,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "linear",
+              }}
+            >
+              <EyeIcon className="h-5 w-5" />
+            </motion.div>
+            Color Palette Generator
           </CardTitle>
           <CardDescription>
             Generates a palette with rule 60/30/10 based on a base color

@@ -34,7 +34,6 @@ const EncoderDecoder = () => {
     if (!input) return;
     setIsProcessing(true);
 
-    // Simulate processing time
     await new Promise((resolve) => setTimeout(resolve, 300));
 
     let result = "";

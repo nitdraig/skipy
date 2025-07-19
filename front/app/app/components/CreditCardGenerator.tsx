@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-
 import {
   Select,
   SelectContent,
@@ -22,7 +21,6 @@ import {
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { CreditCard } from "lucide-react";
-
 import { toast } from "react-toastify";
 import { cardVariants } from "@/hooks/Motion-Variants";
 
@@ -36,10 +34,8 @@ const CreditCardGenerator = () => {
   const generateCard = async () => {
     setIsGenerating(true);
 
-    // Simulate generation
     await new Promise((resolve) => setTimeout(resolve, 600));
 
-    // Generate fake card data for testing
     const visaPrefix = "4";
     const mastercardPrefix = "5";
     const amexPrefix = "3";

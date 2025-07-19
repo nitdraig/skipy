@@ -29,7 +29,6 @@ const PasswordGenerator = () => {
   const generatePassword = async () => {
     setIsGenerating(true);
 
-    // Simulate generation time
     await new Promise((resolve) => setTimeout(resolve, 500));
 
     let charset = "";
@@ -58,8 +57,12 @@ const PasswordGenerator = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <motion.div
-              animate={{ scale: [1, 1.1, 1] }}
-              transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+              animate={{ rotate: [0, 90, 180, 270, 360] }}
+              transition={{
+                duration: 4,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "linear",
+              }}
             >
               <Shield className="h-5 w-5" />
             </motion.div>

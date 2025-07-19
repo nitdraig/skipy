@@ -11,6 +11,12 @@ import {
   CreditCard,
   Unlink,
   Palette,
+  VenetianMaskIcon,
+  Regex,
+  FileJson2Icon,
+  PersonStandingIcon,
+  Braces,
+  Eye,
 } from "lucide-react";
 import LinkShortener from "./components/LinkShorter";
 import PasswordGenerator from "./components/PasswordGenerator";
@@ -21,6 +27,12 @@ import EncoderDecoder from "./components/EncoderDecoder";
 import { pageTransition, pageVariants } from "@/hooks/Motion-Variants";
 import ExternalLinkUnshortener from "./components/ExternalLinkUnshortener";
 import ColorPaletteGenerator from "./components/ColorPaletteGenerator";
+
+import JWTToolkit from "./components/JWTToolKit";
+import JSONFormatterValidator from "./components/JsonValidator";
+import FakeDataGenerator from "./components/FakeDataGenerator";
+import YamlJsonConverter from "./components/YamlJsonConverter";
+import UrlValidator from "./components/UrlValidator";
 
 const tools = [
   {
@@ -65,6 +77,42 @@ const tools = [
     shortName: "Color Palette",
     icon: Palette,
   },
+  {
+    id: "jwt-tool",
+    name: "JWT Tool",
+    shortName: "JWT Tool",
+    icon: VenetianMaskIcon,
+  },
+  {
+    id: "json-validator",
+    name: "JSON Validator",
+    shortName: "JSON Validator",
+    icon: FileJson2Icon,
+  },
+  {
+    id: "fake-data-generator",
+    name: "Fake Data Generator",
+    shortName: "Fake Data Generator",
+    icon: PersonStandingIcon,
+  },
+  {
+    id: "yaml-json",
+    name: "Yaml/Json Converter",
+    shortName: "Yaml/Json Converter",
+    icon: Braces,
+  },
+  {
+    id: "url-validator",
+    name: "URL Validator",
+    shortName: "URL Validator",
+    icon: Eye,
+  },
+  //   {
+  //     id: "regex-tester",
+  //     name: "Regex Tester",
+  //     shortName: "Regex Tester",
+  //     icon: Regex,
+  //   },
 ];
 
 export default function AppPage() {
@@ -79,6 +127,12 @@ export default function AppPage() {
       "encoder-decoder": EncoderDecoder,
       "color-palette-generator": ColorPaletteGenerator,
       "credit-card": CreditCardGenerator,
+      "jwt-tool": JWTToolkit,
+      "json-validator": JSONFormatterValidator,
+      "fake-data-generator": FakeDataGenerator,
+      "yaml-json": YamlJsonConverter,
+      "url-validator": UrlValidator,
+      //   "regex-tester": RegexTester,
     };
 
     const ToolComponent: any =
@@ -187,7 +241,7 @@ export default function AppPage() {
             </TabsList>
 
             {/* Versión desktop - 6 columnas */}
-            <TabsList className="hidden lg:grid h-20 w-full grid-cols-4 gap-1 p-1 bg-muted/50 backdrop-blur-sm">
+            <TabsList className="hidden lg:grid h-28 w-full grid-cols-4 gap-1 p-1 bg-muted/50 backdrop-blur-sm">
               {tools.map((tool, index) => (
                 <motion.div
                   key={tool.id}

@@ -20,16 +20,13 @@ const ExternalLinkUnshortener = () => {
   const [finalUrl, setFinalUrl] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Función para normalizar la URL agregando protocolo si no lo tiene
   const normalizeUrl = (url: string): string => {
     const trimmedUrl = url.trim();
 
-    // Verificar si ya tiene protocolo
     if (trimmedUrl.startsWith("http://") || trimmedUrl.startsWith("https://")) {
       return trimmedUrl;
     }
 
-    // Agregar https:// por defecto
     return `https://${trimmedUrl}`;
   };
 
@@ -39,7 +36,6 @@ const ExternalLinkUnshortener = () => {
       return;
     }
 
-    // Normalizar la URL antes de enviarla
     const normalizedUrl = normalizeUrl(shortUrl);
 
     setLoading(true);
@@ -72,7 +68,6 @@ const ExternalLinkUnshortener = () => {
     }
   };
 
-  // Opcional: También normalizar cuando el usuario termine de escribir
   const handleInputBlur = () => {
     if (shortUrl.trim()) {
       const normalized = normalizeUrl(shortUrl);
