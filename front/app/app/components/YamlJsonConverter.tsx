@@ -9,6 +9,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
+import { Braces } from "lucide-react";
 
 export default function YamlJsonConverter() {
   const [yamlInput, setYamlInput] = useState("");
@@ -57,7 +58,20 @@ export default function YamlJsonConverter() {
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <Card className="border-2 hover:border-primary/20 transition duration-300">
         <CardHeader>
-          <CardTitle>YAML ⇄ JSON Converter</CardTitle>
+          <CardTitle className="flex items-center gap-2">
+            {" "}
+            <motion.div
+              animate={{ rotate: [0, 90, 180, 270, 360] }}
+              transition={{
+                duration: 4,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "linear",
+              }}
+            >
+              <Braces className="h-5 w-5" />
+            </motion.div>
+            YAML ⇄ JSON Converter
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <Tabs

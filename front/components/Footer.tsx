@@ -31,7 +31,9 @@ const Footer = () => {
           <div className="flex items-center space-x-4">
             <motion.div whileHover={{ scale: 1.05 }}>
               <NextLink
-                href="https://github.com"
+                href="https://github.com/nitdraig/skipy"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 GitHub
@@ -47,7 +49,7 @@ const Footer = () => {
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }}>
               <NextLink
-                href="/docs"
+                href="https://github.com/nitdraig/skipy/blob/master/README.md"
                 className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 Docs

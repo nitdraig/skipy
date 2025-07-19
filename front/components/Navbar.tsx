@@ -48,8 +48,10 @@ const Navbar = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <NextLink
-                  href="https://github.com"
+                  href="https://github.com/nitdraig/skipy"
                   className="flex items-center space-x-1"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Github className="h-4 w-4" />
                   <span>GitHub</span>

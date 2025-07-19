@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
+import { Eye } from "lucide-react";
 
 export default function UrlValidator() {
   const [url, setUrl] = useState("");
@@ -56,7 +57,19 @@ export default function UrlValidator() {
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <Card className="border-2 hover:border-primary/20 transition duration-300">
         <CardHeader>
-          <CardTitle>URL Validator</CardTitle>
+          <CardTitle className="flex items-center gap-2">
+            <motion.div
+              animate={{ rotate: [0, 90, 180, 270, 360] }}
+              transition={{
+                duration: 4,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "linear",
+              }}
+            >
+              <Eye className="h-5 w-5" />
+            </motion.div>
+            URL Validator
+          </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
