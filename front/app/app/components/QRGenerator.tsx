@@ -21,18 +21,164 @@ const QRGenerator = () => {
   const [text, setText] = useState("");
   const [qrGenerated, setQrGenerated] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [qrDataUrl, setQrDataUrl] = useState("");
+
+  // Función para normalizar URL (agregar protocolo si no lo tiene)
+  const normalizeUrl = (input: string): string => {
+    const trimmedInput = input.trim();
+
+    // Si parece ser una URL pero no tiene protocolo, agregar https://
+    if (
+      trimmedInput.includes(".") &&
+      !trimmedInput.startsWith("http://") &&
+      !trimmedInput.startsWith("https://") &&
+      !trimmedInput.includes(" ") &&
+      (trimmedInput.includes(".com") ||
+        trimmedInput.includes(".org") ||
+        trimmedInput.includes(".net") ||
+        trimmedInput.includes(".edu") ||
+        trimmedInput.includes(".gov") ||
+        trimmedInput.match(/\.[a-z]{2,4}$/i))
+    ) {
+      return `https://${trimmedInput}`;
+    }
+
+    return trimmedInput;
+  };
 
   const generateQR = async () => {
-    if (!text) return;
+    if (!text.trim()) {
+      toast.error("Please enter text or URL");
+      return;
+    }
+
     setIsGenerating(true);
 
-    // Simulate generation
-    await new Promise((resolve) => setTimeout(resolve, 800));
+    try {
+      // Normalizar el texto si parece ser una URL
+      const processedText = normalizeUrl(text);
 
-    setQrGenerated(true);
-    setIsGenerating(false);
-    toast("QR code generated!");
+      // Usar QR Server API (servicio gratuito)
+      const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${encodeURIComponent(
+        processedText,
+      )}`;
+
+      // Verificar que la imagen se puede cargar
+      const img = new Image();
+      img.crossOrigin = "anonymous";
+
+      await new Promise((resolve, reject) => {
+        img.onload = resolve;
+        img.onerror = reject;
+        img.src = qrApiUrl;
+      });
+
+      setQrDataUrl(qrApiUrl);
+      setQrGenerated(true);
+      toast.success("QR code generated successfully!");
+    } catch (error) {
+      console.error("Error generating QR code:", error);
+      toast.error("Failed to generate QR code");
+    } finally {
+      setIsGenerating(false);
+    }
   };
+
+  // Función para generar nombre de archivo basado en el contenido
+  const generateFileName = (input: string): string => {
+    const processedText = normalizeUrl(input.trim());
+
+    try {
+      // Si es una URL, extraer el dominio
+      if (
+        processedText.startsWith("http://") ||
+        processedText.startsWith("https://")
+      ) {
+        const url = new URL(processedText);
+        let domain = url.hostname.replace("www.", "");
+
+        // Si tiene path, incluirlo también (limitado)
+        if (url.pathname && url.pathname !== "/") {
+          const path = url.pathname
+            .replace(/[^a-zA-Z0-9-_]/g, "-")
+            .substring(0, 20);
+          domain += path;
+        }
+
+        return `qr-${domain.replace(/[^a-zA-Z0-9-_]/g, "-")}.png`;
+      }
+
+      // Si no es URL, usar las primeras palabras del texto
+      const cleanText = processedText
+        .replace(/[^a-zA-Z0-9\s]/g, "") // Remover caracteres especiales
+        .trim()
+        .split(/\s+/) // Dividir por espacios
+        .slice(0, 3) // Tomar máximo 3 palabras
+        .join("-")
+        .toLowerCase()
+        .substring(0, 30); // Limitar longitud
+
+      return cleanText ? `qr-${cleanText}.png` : "qr-code.png";
+    } catch (error) {
+      // Fallback si hay error procesando
+      return "qr-code.png";
+    }
+  };
+
+  const downloadQR = async () => {
+    if (!qrDataUrl) return;
+
+    try {
+      // Generar nombre de archivo basado en el contenido
+      const fileName = generateFileName(text);
+
+      // Crear un canvas para convertir la imagen a blob
+      const img = new Image();
+      img.crossOrigin = "anonymous";
+
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        // Fondo blanco
+        if (ctx) {
+          ctx.fillStyle = "white";
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0);
+
+          // Convertir a blob y descargar
+          canvas.toBlob((blob) => {
+            if (blob) {
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement("a");
+              a.href = url;
+              a.download = fileName;
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+              URL.revokeObjectURL(url);
+              toast.success(`QR code downloaded as ${fileName}`);
+            }
+          }, "image/png");
+        }
+      };
+
+      img.src = qrDataUrl;
+    } catch (error) {
+      console.error("Error downloading QR code:", error);
+      toast.error("Failed to download QR code");
+    }
+  };
+
+  const resetGenerator = () => {
+    setText("");
+    setQrGenerated(false);
+    setQrDataUrl("");
+  };
+
   return (
     <motion.div variants={cardVariants} initial="hidden" animate="visible">
       <Card className="border-2 hover:border-primary/20 transition-colors duration-300">
@@ -59,71 +205,92 @@ const QRGenerator = () => {
             <Label htmlFor="qr-text">Text or URL</Label>
             <Textarea
               id="qr-text"
-              placeholder="Enter text or URL to generate QR code"
+              placeholder="Enter text, URL, or any data to generate QR code"
               value={text}
               onChange={(e) => setText(e.target.value)}
               className="transition-all duration-200 focus:ring-2 focus:ring-primary/20"
+              rows={3}
             />
           </div>
-          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-            <Button
-              onClick={generateQR}
-              className="w-full"
-              disabled={isGenerating}
+
+          <div className="flex gap-2">
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="flex-1"
             >
-              <AnimatePresence mode="wait">
-                {isGenerating ? (
-                  <motion.div
-                    key="generating"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="flex items-center gap-2"
-                  >
+              <Button
+                onClick={generateQR}
+                className="w-full"
+                disabled={isGenerating || !text.trim()}
+              >
+                <AnimatePresence mode="wait">
+                  {isGenerating ? (
                     <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{
-                        duration: 1,
-                        repeat: Number.POSITIVE_INFINITY,
-                        ease: "linear",
-                      }}
+                      key="generating"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="flex items-center gap-2"
                     >
-                      <QrCode className="h-4 w-4" />
+                      <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{
+                          duration: 1,
+                          repeat: Number.POSITIVE_INFINITY,
+                          ease: "linear",
+                        }}
+                      >
+                        <QrCode className="h-4 w-4" />
+                      </motion.div>
+                      Generating...
                     </motion.div>
-                    Generating...
-                  </motion.div>
-                ) : (
-                  <motion.span
-                    key="text"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                  >
-                    Generate QR Code
-                  </motion.span>
-                )}
-              </AnimatePresence>
-            </Button>
-          </motion.div>
-          <AnimatePresence>
+                  ) : (
+                    <motion.span
+                      key="text"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    >
+                      Generate QR Code
+                    </motion.span>
+                  )}
+                </AnimatePresence>
+              </Button>
+            </motion.div>
+
             {qrGenerated && (
+              <motion.div
+                initial={{ opacity: 0, width: 0 }}
+                animate={{ opacity: 1, width: "auto" }}
+                exit={{ opacity: 0, width: 0 }}
+              >
+                <Button onClick={resetGenerator} variant="outline">
+                  Reset
+                </Button>
+              </motion.div>
+            )}
+          </div>
+
+          <AnimatePresence>
+            {qrGenerated && qrDataUrl && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.5, type: "spring" }}
-                className="space-y-2"
+                className="space-y-4"
               >
-                <Label>QR Code</Label>
-                <div className="flex flex-col items-center space-y-2">
+                <Label>Generated QR Code</Label>
+                <div className="flex flex-col items-center space-y-4">
                   <motion.div
-                    className="w-48 h-48 bg-muted rounded-lg flex items-center justify-center border-2 border-dashed border-primary/20"
-                    whileHover={{ scale: 1.05 }}
+                    className="p-4 bg-white rounded-lg shadow-lg border"
+                    whileHover={{ scale: 1.02 }}
                     animate={{
                       boxShadow: [
-                        "0 0 0 0 rgba(var(--primary), 0)",
-                        "0 0 0 10px rgba(var(--primary), 0.1)",
-                        "0 0 0 0 rgba(var(--primary), 0)",
+                        "0 4px 20px rgba(0,0,0,0.1)",
+                        "0 8px 30px rgba(0,0,0,0.15)",
+                        "0 4px 20px rgba(0,0,0,0.1)",
                       ],
                     }}
                     transition={{
@@ -131,17 +298,30 @@ const QRGenerator = () => {
                       repeat: Number.POSITIVE_INFINITY,
                     }}
                   >
-                    <QrCode className="h-32 w-32 text-muted-foreground" />
+                    <img
+                      src={qrDataUrl}
+                      alt="Generated QR Code"
+                      className="w-48 h-48 object-contain"
+                      style={{ imageRendering: "pixelated" }}
+                    />
                   </motion.div>
+
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <Button variant="outline" size="sm">
+                    <Button variant="outline" size="sm" onClick={downloadQR}>
                       <Download className="h-4 w-4 mr-2" />
                       Download PNG
                     </Button>
                   </motion.div>
+
+                  {/* Mostrar el texto/URL que se codificó */}
+                  <div className="text-center max-w-md">
+                    <p className="text-sm text-muted-foreground break-all">
+                      <strong>Encoded:</strong> {normalizeUrl(text)}
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             )}
