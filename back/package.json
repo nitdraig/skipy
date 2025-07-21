@@ -23,7 +23,7 @@
     "base-project"
   ],
   "author": "Agustin Avellaneda",
-  "license": "ISC",
+  "license": "GNU-3",
   "dependencies": {
     "@types/puppeteer": "^5.4.7",
     "bcrypt": "^5.1.1",
