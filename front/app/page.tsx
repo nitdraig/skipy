@@ -44,7 +44,7 @@ export default function LandingPage() {
       {/* Features Grid */}
       <FeaturesGridSection />
       {/* Screenshots Section */}
-      <ScreenshotsSection />
+      {/* <ScreenshotsSection /> */}
       {/* Roadmap */}
       <RoadmapSection />
       {/* CLI Section */}
