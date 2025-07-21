@@ -319,7 +319,7 @@ const CliSection = () => {
           </Button>
         </div>
         <p className="text-sm text-muted-foreground mt-4">
-          Open source • MIT License • Built with TypeScript
+          Open source • GNU License • Built with TypeScript
         </p>
       </motion.div>
     </section>

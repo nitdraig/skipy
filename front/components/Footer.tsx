@@ -29,6 +29,16 @@ const Footer = () => {
             </p>
           </div>
           <div className="flex items-center space-x-4">
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <NextLink
+                href="https://www.npmjs.com/package/skipy-devtools-cli"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Npm
+              </NextLink>
+            </motion.div>
             <motion.div whileHover={{ scale: 1.05 }}>
               <NextLink
                 href="https://github.com/nitdraig/skipy"

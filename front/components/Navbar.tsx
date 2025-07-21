@@ -47,6 +47,13 @@ const Navbar = () => {
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                className="hidden md:block"
+              >
+                <NextLink href="#cli">CLI</NextLink>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <NextLink
                   href="https://github.com/nitdraig/skipy"
