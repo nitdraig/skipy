@@ -1,0 +1,44 @@
+{
+  "name": "skipy-devtools-cli",
+  "version": "1.0.3",
+  "description": "Skipy Developer Tools CLI",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nitdraig/skipy"
+  },
+  "author": "Agustin Avellaneda",
+  "license": "GNU-3",
+  "bugs": {
+    "url": "https://github.com/nitdraig/skipy/issues"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.9.0",
+    "chalk": "^5.4.1",
+    "commander": "^14.0.0",
+    "figlet": "^1.8.2",
+    "jsonwebtoken": "^9.0.2",
+    "ora": "^8.2.0",
+    "qrcode-terminal": "^0.12.0",
+    "valid-url": "^1.0.9"
+  },
+  "devDependencies": {
+    "@types/figlet": "^1.7.0",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^24.0.15",
+    "@types/qrcode-terminal": "^0.12.2",
+    "@types/valid-url": "^1.0.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "bin": {
+    "skipy": "./dist/index.js"
+  },
+  "scripts": {
+    "build:cli": "tsc"
+  }
+}
