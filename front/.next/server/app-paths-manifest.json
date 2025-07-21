@@ -1,1 +1,12 @@
-{}
+{
+  "/api/ping-url/route": "app/api/ping-url/route.js",
+  "/apple-icon.png/route": "app/apple-icon.png/route.js",
+  "/icon0.svg/route": "app/icon0.svg/route.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/manifest.json/route": "app/manifest.json/route.js",
+  "/icon1.png/route": "app/icon1.png/route.js",
+  "/[slug]/page": "app/[slug]/page.js",
+  "/app/page": "app/app/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/page": "app/page.js"
+}
