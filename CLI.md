@@ -1,113 +1,131 @@
-````markdown
-# 🧱 Skipy CLI
+# skipy-devtools-cli
 
-A lightweight command-line version of **Skipy**, built for speed and convenience. Run tools instantly using `npx`.
+**Skipy Developer Tools CLI** — A multipurpose command-line tool for developers. Generate passwords, create QR codes, manage JWTs, generate fake data, and much more — all from your terminal.
 
 ---
 
-## 🚀 Quick Start
+## Features
+
+- Secure password generator
+- QR code generation and scanning in terminal
+- JWT (JSON Web Token) creation, verification, and decoding
+- Fake data generation with Faker.js
+- URL validation and manipulation
+- Palette generator with 60%, 30%, 10% Rule
+- And many other developer utilities
+
+---
+
+## Installation
+
+### Via npm (recommended)
 
 ```bash
-npx skipy-cli [command] [options]
+npm install -g skipy-devtools-cli
 ```
-````
 
-> ⚠️ No global installation required.
-
----
-
-## 📌 Available Commands
-
-### 🔐 `password`
-
-Generates a random password.
+### From source (for development)
 
 ```bash
-npx skipy-cli password --length 16 --symbols
+git clone https://github.com/nitdraig/skipy.git
+cd skipy
+npm install
+npm run build:cli
+npm link
 ```
-
-**Options:**
-
-| Flag        | Description                        | Default |
-| ----------- | ---------------------------------- | ------- |
-| `--length`  | Password length                    | 12      |
-| `--symbols` | Include special characters (`!@#`) | false   |
 
 ---
 
-### 🔑 `jwt`
+## Usage
 
-Encode or decode JSON Web Tokens.
+Once installed, run the CLI using the command:
 
 ```bash
-npx skipy-cli jwt encode '{"user":"admin"}' --secret=secret123
-npx skipy-cli jwt decode eyJhbGciOi...
+skipy --help
 ```
 
-**Modes:**
-
-- `encode <payload>`: Encode a JSON object as a JWT
-- `decode <token>`: Decode an existing JWT
-- `--secret`: Optional secret to sign/verify the token
+This will display the main help and list of available commands.
 
 ---
 
-### 🧾 `faker`
-
-Generate fake test data.
+### Basic commands
 
 ```bash
-npx skipy-cli faker --type=email
+skipy password      # Generate a secure password
+skipy qr        # Generate a QR code in the terminal
+skipy jwt                # Create, verify, or decode JSON Web Tokens
+skipy fake      # Generate fake test data
+skipy password generate -l 16 -u -d -n -s #It will generate a password of 16 characters that include uppercase, lowercase, numbers and symbols.
+skipy password generate-random "-l 12"
+skipy url shorten "https://example.com/long-url"
+skipy url-validator "https://example.com/"
+skipy palette --random  # Random Palette
+skipy palette --base "#3498db" # From Base color
+skipy palette --light "#3498db" #
+
 ```
 
-**Supported types:**
-
-- `name`
-- `email`
-- `address`
-- `phone`
-- `company`
-
----
-
-### 🧪 More Commands (in progress)
-
-- `shorten`: Create short URLs
-- `qr`: Generate QR code from URL
-- `encode`: Convert text between formats (Base64, ROT13, etc.)
-
----
-
-## 📊 Examples
+Example to generate a password:
 
 ```bash
-# Generate a strong 20-character password
-npx skipy-cli password --length 20 --symbols
+skipy password--length 16 --symbols
+```
 
-# Decode a JWT token
-npx skipy-cli jwt decode eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+Example to generate a QR code:
 
-# Generate a fake name
-npx skipy-cli faker --type=name
+```bash
+skipy qr generate "https://example.com"
 ```
 
 ---
 
-## 🤝 Contribute to the CLI
+## Development
 
-Want to help improve the CLI or add more tools?
-👉 [Open an Issue or Pull Request](https://github.com/nitdraig/skipy)
+To contribute or customize the CLI:
 
----
+1. Clone the repository
 
-## 📄 License
+2. Install dependencies
 
-This CLI is licensed under the **GNU General Public License v3.0**.
-[View License](https://github.com/nitdraig/skipy/blob/main/LICENSE)
+```bash
+npm install
+```
 
+3. Build the TypeScript source
+
+```bash
+npm run build:cli
+```
+
+4. Link the CLI locally for testing
+
+```bash
+npm link
+```
+
+5. Run the CLI
+
+```bash
+skipy <command>
 ```
 
 ---
 
-Would you like me to generate these as actual files ready for GitHub, or include badges and links for auto-generated documentation (like for npm CLI tools)?
-```
+## Configuration
+
+- Written in TypeScript and compiled to JavaScript for Node.js.
+- Uses [`commander`](https://github.com/tj/commander.js/) for CLI framework, [`chalk`](https://github.com/chalk/chalk) for terminal colors, and [`qrcode-terminal`](https://github.com/gtanner/qrcode-terminal) for QR code generation.
+
+---
+
+## License
+
+GNU-3 © Agustin Avellaneda
+
+---
+
+## Useful Links
+
+- Repository: [https://github.com/nitdraig/skipy](https://github.com/nitdraig/skipy)
+- Issues: [https://github.com/nitdraig/skipy/issues](https://github.com/nitdraig/skipy/issues)
+- npm: [https://www.npmjs.com/package/skipy-devtools-cli](https://www.npmjs.com/package/skipy-devtools-cli)

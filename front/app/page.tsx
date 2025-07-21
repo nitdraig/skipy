@@ -11,7 +11,7 @@ import CliSection from "./views/components/CliSection";
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-background overflow-hidden">
+    <div className="min-h-screen md:px-0 px-10 bg-background overflow-hidden">
       {/* Animated Background Elements */}
       <div className="fixed inset-0 -z-10">
         <motion.div

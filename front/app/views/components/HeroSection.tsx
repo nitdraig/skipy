@@ -88,7 +88,7 @@ const HeroSection = () => {
 
         <motion.div className="flex gap-4 mt-6" variants={itemVariants}>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Button size="lg" asChild className="group">
+            <Button size="sm" asChild className="group">
               <NextLink href="/app">
                 Try the App
                 <motion.div
@@ -105,7 +105,7 @@ const HeroSection = () => {
             </Button>
           </motion.div>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Button variant="outline" size="lg" asChild>
+            <Button variant="outline" size="sm" asChild>
               <NextLink
                 href={`https://github.com/${REPO_OWNER}/${REPO_NAME}`}
                 target="_blank"

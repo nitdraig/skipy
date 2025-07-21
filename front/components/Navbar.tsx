@@ -40,6 +40,7 @@ const Navbar = () => {
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                className="hidden md:block"
               >
                 <NextLink href="#roadmap">Roadmap</NextLink>
               </motion.div>
@@ -55,6 +56,24 @@ const Navbar = () => {
                 >
                   <Github className="h-4 w-4" />
                   <span>GitHub</span>
+                </NextLink>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <NextLink
+                  href="https://github.com/nitdraig/skipy"
+                  className="flex items-center space-x-1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    alt="Npm Logo"
+                    className="h-4 w-4 rounded-full"
+                    src="https://avatars.githubusercontent.com/u/6078720?s=200&v=4"
+                  />
+                  <span>Npm</span>
                 </NextLink>
               </motion.div>
             </nav>

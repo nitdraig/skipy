@@ -14,7 +14,7 @@ export function registerUrlShortenerCommands(program: Command) {
         process.exit(1);
       }
 
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
+      const apiUrl = "https://api.skipy.click";
 
       try {
         const response = await fetch(`${apiUrl}/url-shorter/shorter`, {

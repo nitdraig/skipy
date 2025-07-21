@@ -25,6 +25,7 @@ From shortening URLs to generating secure passwords and simulating data for test
 
 - 🔗 **Frontend**: [https://skipy.click](https://skipy.click)
 - ⚙️ **Backend API**: [https://api.skipy.click](https://api.skipy.click)
+- 🔨 **CLI**: [skipy-devtools-cli](https://www.npmjs.com/package/skipy-devtools-cli)
 
 ---
 
@@ -57,6 +58,7 @@ From shortening URLs to generating secure passwords and simulating data for test
 
 - **Frontend**: Next.js · Tailwind CSS · TypeScript
 - **Backend**: Node.js · Express.js · JavaScript
+- **Cli**: Node.js · TypeScript
 
 ---
 
@@ -64,7 +66,6 @@ From shortening URLs to generating secure passwords and simulating data for test
 
 - ✅ Improve UI and mobile responsiveness
 - ✅ Add JSON, YAML and Faker tools
-- 🔄 Expand CLI version with `npx`
 - 🆕 Add accessibility and SEO checkers
 - 🧠 Plan future AI-powered utilities
 
