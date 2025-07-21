@@ -63,7 +63,7 @@ const Navbar = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <NextLink
-                  href="https://github.com/nitdraig/skipy"
+                  href="https://www.npmjs.com/package/skipy-devtools-cli"
                   className="flex items-center space-x-1"
                   target="_blank"
                   rel="noopener noreferrer"
