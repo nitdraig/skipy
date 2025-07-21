@@ -93,7 +93,7 @@ export default function AppPage() {
 
       <div className="flex-1 space-y-4 p-4 md:p-8">
         <Tabs value={activeCategory} onValueChange={setActiveCategory}>
-          <TabsList className="grid grid-cols-2 sm:grid-cols-4 gap-1 p-1 mb-4 bg-muted/30 backdrop-blur-sm">
+          <TabsList className="grid grid-cols-2 lg:h-auto h-20 sm:grid-cols-4 gap-1 p-1 mb-4 bg-muted/30 backdrop-blur-sm">
             {toolCategories.map((category) => (
               <TabsTrigger
                 key={category.id}
@@ -107,7 +107,7 @@ export default function AppPage() {
         </Tabs>
 
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-1 p-1 bg-muted/50 backdrop-blur-sm">
+          <TabsList className="grid grid-cols-2 lg:h-auto h-20 sm:grid-cols-3 md:grid-cols-4 gap-1 p-1 bg-muted/50 backdrop-blur-sm">
             {toolCategories
               .find((cat) => cat.id === activeCategory)
               ?.tools.map((tool, index) => (
