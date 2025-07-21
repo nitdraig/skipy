@@ -55,20 +55,23 @@ const QRGenerator = () => {
     try {
       const processedText = normalizeUrl(text);
 
-      const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${encodeURIComponent(
-        processedText,
-      )}`;
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/qr-generator`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ text: processedText }),
+        },
+      );
 
-      const img = new Image();
-      img.crossOrigin = "anonymous";
+      if (!response.ok) {
+        throw new Error("Failed to generate QR code");
+      }
 
-      await new Promise((resolve, reject) => {
-        img.onload = resolve;
-        img.onerror = reject;
-        img.src = qrApiUrl;
-      });
-
-      setQrDataUrl(qrApiUrl);
+      const data = await response.json();
+      setQrDataUrl(data.dataUrl);
       setQrGenerated(true);
       toast.success("QR code generated successfully!");
     } catch (error) {

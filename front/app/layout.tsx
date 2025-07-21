@@ -1,55 +1,52 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Inter } from "next/font/google";
+import { IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
 const ibm = IBM_Plex_Mono({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Skipy | Free Multi-tools",
-  description:
-    "MultiHerramientas gratuitas de uso libre para programadores y usuarios IT. ",
+  description: "Free and free tools for programmers and IT users.",
 
   keywords: [
-    "herramientas gratuitas",
-    "programadores",
-    "usuarios IT",
-    "multiHerramientas",
-    "desarrollo de software",
-    "utilidades de programación",
-    "aplicaciones web",
-    "software gratuito",
-    "kit de herramientas",
-    "código abierto",
-    "recursos IT",
-    "herramientas esenciales",
-    "ingenieros de software",
-    "desarrolladores web",
-    "depuración",
-    "desarrollo ágil",
-    "administradores de sistemas",
-    "herramientas de desarrollo",
-    "profesionales IT",
+    "Free tools",
+    "programmers",
+    "IT users",
+    "multi -tools",
+    "software development",
+    "Programming profits",
+    "Web applications",
+    "Free software",
+    "Tool kit",
+    "Open source",
+    "IT resources",
+    "Essential tools",
+    "Software engineers",
+    "Web developers",
+    "depuration",
+    "agile development",
+    "Systems administrators",
+    "Development tools",
+    "IT professionals",
   ],
   twitter: {
     card: "summary_large_image",
     title: "Skipy | Multi-tools",
-    description:
-      "MultiHerramientas gratuitas de uso libre para programadores y usuarios IT.",
+    description: "Free and free tools for programmers and IT users.",
     creator: "Avellaneda Agustín",
     images: [
-      "https://res.cloudinary.com/draig/image/upload/v1705458951/Skipy/cfdmbv9lwkyzxj4zmnug.png",
+      "https://res.cloudinary.com/draig/image/upload/v1753119537/Skipy/4cfdc0b8-6ef3-45bc-abc9-edf9f1ed0257.png",
     ],
   },
 
   openGraph: {
     images:
-      "https://res.cloudinary.com/draig/image/upload/v1705458951/Skipy/cfdmbv9lwkyzxj4zmnug.png",
+      "https://res.cloudinary.com/draig/image/upload/v1753119537/Skipy/4cfdc0b8-6ef3-45bc-abc9-edf9f1ed0257.png",
   },
 };
 

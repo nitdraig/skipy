@@ -4,6 +4,7 @@ import helmet from "helmet";
 import linkRouter from "./domain/url-shorter/routes/linkRoutes";
 import rateLimit from "express-rate-limit";
 import mongoSanitize from "express-mongo-sanitize";
+import qrGeneratorRouter from "./domain/qr-generator/routes/qr-generator";
 const app = express();
 
 app.use(express.json());
@@ -40,5 +41,6 @@ app.use(mongoSanitize()); // Limpia consultas maliciosas
 app.use(express.json());
 
 app.use("/url-shorter", linkRouter);
+app.use("/qr-generator", qrGeneratorRouter);
 
 export default app;
