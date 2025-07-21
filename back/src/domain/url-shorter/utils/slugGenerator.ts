@@ -1,7 +1,13 @@
-import { customAlphabet } from "nanoid";
-
 const alphabet = "abcdefghijklmnopqrstuvwxyz0123456789";
 
-const generateSlug = customAlphabet(alphabet, 6);
+let generateSlug: (size?: number) => string;
 
-export default generateSlug;
+(async () => {
+  const { customAlphabet } = await import("nanoid");
+  generateSlug = customAlphabet(alphabet, 6);
+})();
+
+export default function getSlug(): string {
+  if (!generateSlug) throw new Error("Slug generator not initialized yet.");
+  return generateSlug();
+}
