@@ -8,6 +8,7 @@ import { registerPasswordCommands } from "./commands/password";
 import { registerUrlValidatorCommands } from "./commands/urlValidator";
 import { registerColorPaletteCommand } from "./commands/paletteGenerator";
 import { registerWelcomeCommand, welcomeHandler } from "./commands/welcome";
+import { registerUrlShortenerCommands } from "./commands/urlShortener";
 
 const program = new Command();
 
@@ -17,6 +18,7 @@ registerWelcomeCommand(program);
 registerJwtCommands(program);
 registerPasswordCommands(program);
 registerUrlValidatorCommands(program);
+registerUrlShortenerCommands(program);
 registerFakerCommands(program);
 registerQrCommands(program);
 registerColorPaletteCommand(program);

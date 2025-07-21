@@ -43,7 +43,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="container space-y-6 py-8 md:py-12 lg:py-24 relative">
+    <section className="container space-y-6  py-20  lg:py-24 relative">
       <motion.div
         className="mx-auto flex max-w-[980px] flex-col items-center gap-2 text-center"
         variants={containerVariants}
