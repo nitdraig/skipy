@@ -53,10 +53,6 @@ export default function RedirectPage() {
         const res = await fetch(
           `${process.env.NEXT_PUBLIC_API_URL}/url-shorter/shorter/${slug}`,
         );
-        console.log(
-          "URL:",
-          `${process.env.NEXT_PUBLIC_API_URL}/url-shorter/shorter/${slug}`,
-        );
 
         if (!res.ok) throw new Error("The link could not be obtained");
 

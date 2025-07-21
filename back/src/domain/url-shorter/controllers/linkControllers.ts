@@ -39,7 +39,7 @@ async function createShortLink(
     const existingLink = await LinkModel.findOne({ originalUrl });
 
     if (existingLink) {
-      const frontendDomain = req.headers.origin || `http://${req.headers.host}`;
+      const frontendDomain = "https://skipy.click";
       const shortenedUrl = `${frontendDomain}/${existingLink.slug}`;
       return res.status(200).json({ shortenedUrl });
     }
@@ -48,7 +48,8 @@ async function createShortLink(
 
     await LinkModel.create({ originalUrl, slug });
 
-    const frontendDomain = req.headers.origin || `http://${req.headers.host}`;
+    const frontendDomain = "https://skipy.click";
+
     const shortenedUrl = `${frontendDomain}/${slug}`;
 
     res.status(200).json({ shortenedUrl });
@@ -83,6 +84,40 @@ async function redirectToOriginalUrl(req: Request, res: Response) {
   }
 }
 
+async function getRedirectData(req: Request, res: Response) {
+  if (req.method !== "GET") {
+    return res.status(405).json({ error: "Method Not Allowed" });
+  }
+
+  const { slug } = req.params;
+
+  if (!slug) {
+    return res.status(400).json({ error: "Slug is required" });
+  }
+
+  try {
+    const existingLink = await LinkModel.findOne({ slug });
+
+    if (!existingLink) {
+      return res.status(404).json({ error: "Link not found" });
+    }
+
+    return res.status(200).json({
+      originalUrl: existingLink.originalUrl,
+      slug: existingLink.slug,
+      isSecure: existingLink.isSecure,
+      domain: new URL(existingLink.originalUrl).hostname,
+      title: existingLink.title,
+      description: existingLink.description,
+      clicks: existingLink.clicks,
+      createdAt: existingLink.createdAt,
+    });
+  } catch (error) {
+    console.error("Error fetching link data:", error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+}
+
 function followRedirect(url: string, maxRedirects = 10): Promise<string> {
   return new Promise((resolve, reject) => {
     let redirects = 0;
@@ -103,7 +138,7 @@ function followRedirect(url: string, maxRedirects = 10): Promise<string> {
       const req = lib.get(
         currentUrl,
         {
-          timeout: 10000, // 10 segundos de timeout
+          timeout: 10000,
           headers: {
             "User-Agent": "Mozilla/5.0 (compatible; URL-Unshortener/1.0)",
             Accept:
@@ -116,11 +151,9 @@ function followRedirect(url: string, maxRedirects = 10): Promise<string> {
         (res) => {
           const statusCode = res.statusCode || 0;
 
-          // Manejar diferentes tipos de redirección
           if (statusCode >= 300 && statusCode < 400 && res.headers.location) {
             redirects++;
 
-            // Resuelve URLs relativas y absolutas
             let nextUrl: string;
             try {
               nextUrl = new URL(res.headers.location, currentUrl).href;
@@ -182,7 +215,6 @@ async function unshortenUrl(
     });
   }
 
-  // Validar formato de URL
   if (!isValidUrl(shortUrl)) {
     return res.status(400).json({
       success: false,
@@ -221,7 +253,6 @@ async function extractRedirectFromHTML(
   html: string,
   baseUrl: string
 ): Promise<string | null> {
-  // Buscar meta refresh
   const metaRefreshMatch = html.match(
     /<meta[^>]*http-equiv=["']refresh["'][^>]*content=["'](?:\d+;)?\s*url=([^"']+)["']/i
   );
@@ -537,4 +568,5 @@ export {
   unshortenUrlWithFetch,
   unshortenUrlWithPuppeteer,
   unshortenUrlHybrid,
+  getRedirectData,
 };

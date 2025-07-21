@@ -54,10 +54,17 @@ const CliSection = () => {
     },
     {
       name: "URL Tools",
-      description: "Validate and manipulate URLs, including shortening",
+      description: "Validate and manipulate URLs",
       icon: Link,
-      command: 'npx skipy shorten "https://example.com/long-url"',
+      command: 'npx skipy url-validator "https://example.com/long-url"',
       color: "text-cyan-600",
+    },
+    {
+      name: "URL Shortener",
+      description: "Shorten long URLs easily",
+      icon: ExternalLink,
+      command: "npx skipy url shorten 'https://example.com/long-url'",
+      color: "text-pink-600",
     },
     {
       name: "Color Palette Generator",

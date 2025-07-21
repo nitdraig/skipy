@@ -22,6 +22,7 @@ app.get("/", (req, res) => {
 app.use(
   cors({
     origin: "https://www.skipy.click",
+    //  origin: "*",
   })
 );
 app.use(cors());

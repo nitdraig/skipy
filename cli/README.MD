@@ -51,30 +51,30 @@ This will display the main help and list of available commands.
 ### Basic commands
 
 ```bash
-skipy password      # Generate a secure password
-skipy qr        # Generate a QR code in the terminal
-skipy jwt                # Create, verify, or decode JSON Web Tokens
-skipy fake      # Generate fake test data
-skipy password generate -l 16 -u -d -n -s #It will generate a password of 16 characters that include uppercase, lowercase, numbers and symbols.
-skipy password generate-random "-l 12"
-skipy url shorten "https://example.com/long-url"
-skipy url-validator "https://example.com/"
-skipy palette --random  # Random Palette
-skipy palette --base "#3498db" # From Base color
-skipy palette --light "#3498db" #
+npx skipy password      # Generate a secure password
+npx skipy qr        # Generate a QR code in the terminal
+npx skipy jwt                # Create, verify, or decode JSON Web Tokens
+npx skipy fake      # Generate fake test data
+npx skipy password generate -l 16 -u -d -n -s #It will generate a password of 16 characters that include uppercase, lowercase, numbers and symbols.
+npx skipy password generate-random "-l 12"
+npx skipy url shorten "https://example.com/long-url"
+npx skipy url-validator "https://example.com/"
+npx skipy palette --random  # Random Palette
+npx skipy palette --base "#3498db" # From Base color
+npx skipy palette --light "#3498db" #
 
 ```
 
 Example to generate a password:
 
 ```bash
-skipy password--length 16 --symbols
+npx skipy password--length 16 --symbols
 ```
 
 Example to generate a QR code:
 
 ```bash
-skipy qr generate "https://example.com"
+npx skipy qr generate "https://example.com"
 ```
 
 ---
@@ -106,7 +106,7 @@ npm link
 5. Run the CLI
 
 ```bash
-skipy <command>
+npx skipy <command>
 ```
 
 ---
