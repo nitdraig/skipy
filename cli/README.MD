@@ -11,6 +11,7 @@
 - JWT (JSON Web Token) creation, verification, and decoding
 - Fake data generation with Faker.js
 - URL validation and manipulation
+- Palette generator with 60%, 30%, 10% Rule
 - And many other developer utilities
 
 ---
@@ -55,6 +56,7 @@ skipy qr        # Generate a QR code in the terminal
 skipy jwt                # Create, verify, or decode JSON Web Tokens
 skipy fake      # Generate fake test data
 skipy password generate -l 16 -u -d -n -s #It will generate a password of 16 characters that include uppercase, lowercase, numbers and symbols.
+skipy password generate-random "-l 12"
 skipy url shorten "https://example.com/long-url"
 skipy url-validator "https://example.com/"
 skipy palette --random  # Random Palette

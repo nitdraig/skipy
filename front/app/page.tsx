@@ -1,42 +1,13 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import {
-  Github,
-  ExternalLink,
-  Zap,
-  Shield,
-  QrCode,
-  Code,
-  CreditCard,
-  ArrowRight,
-  Star,
-  GitFork,
-  ChevronDown,
-} from "lucide-react";
-import Image from "next/image";
-import NextLink from "next/link";
 import { motion } from "framer-motion";
-import {
-  cardHoverVariants,
-  containerVariants,
-  floatingVariants,
-  itemVariants,
-} from "@/hooks/Motion-Variants";
+
 import HeroSection from "./views/components/HeroSection";
-import FeaturesGrid from "./views/components/FeaturesGridSection";
 import FeaturesGridSection from "./views/components/FeaturesGridSection";
 import ScreenshotsSection from "./views/components/ScreenshotsSection";
 import RoadmapSection from "./views/components/RoadmapSection";
 import CtaSection from "./views/components/CtaSection";
+import CliSection from "./views/components/CliSection";
 
 export default function LandingPage() {
   return (
@@ -76,6 +47,8 @@ export default function LandingPage() {
       <ScreenshotsSection />
       {/* Roadmap */}
       <RoadmapSection />
+      {/* CLI Section */}
+      <CliSection />
       {/* CTA Section */}
       <CtaSection />{" "}
     </div>

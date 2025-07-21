@@ -15,12 +15,9 @@ import { Progress } from "@/components/ui/progress";
 import {
   AlertTriangle,
   ArrowRight,
-  CheckCircle,
-  Clock,
   ExternalLink,
   Globe,
   Lock,
-  Shield,
   X,
   Zap,
 } from "lucide-react";
@@ -61,12 +58,12 @@ export default function RedirectPage() {
           `${process.env.NEXT_PUBLIC_API_URL}/url-shorter/shorter/${slug}`,
         );
 
-        if (!res.ok) throw new Error("No se pudo obtener el enlace");
+        if (!res.ok) throw new Error("The link could not be obtained");
 
         const data: RedirectData = await res.json();
         setRedirectData(data);
       } catch (err) {
-        console.error("Error al obtener datos:", err);
+        console.error("Error:", err);
         setRedirectData(null);
       } finally {
         setIsLoading(false);
@@ -134,7 +131,7 @@ export default function RedirectPage() {
           >
             <Zap className="h-10 w-10 text-primary" />
           </motion.div>
-          <p className="text-muted-foreground">Cargando redirección...</p>
+          <p className="text-muted-foreground">Loading...</p>
         </motion.div>
       </div>
     );
@@ -148,14 +145,14 @@ export default function RedirectPage() {
             <div className="mx-auto mb-4 p-3 bg-destructive/10 rounded-full">
               <AlertTriangle className="h-8 w-8 text-destructive" />
             </div>
-            <CardTitle>Enlace no encontrado</CardTitle>
+            <CardTitle>Link not found</CardTitle>
             <CardDescription>
-              El enlace acortado no existe o ha expirado.
+              The shortened link does not exist or has expired.
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Button asChild className="w-full">
-              <NextLink href="/">Volver al inicio</NextLink>
+              <NextLink href="/#">Back home</NextLink>
             </Button>
           </CardContent>
         </Card>
@@ -183,17 +180,19 @@ export default function RedirectPage() {
                   <div className="mx-auto mb-4 p-4 bg-primary/10 rounded-full w-fit">
                     <ExternalLink className="h-8 w-8 text-primary" />
                   </div>
-                  <CardTitle>Redireccionando de forma segura</CardTitle>
+                  <CardTitle>Redirecting safely</CardTitle>
                   <CardDescription>
-                    Serás redirigido en{" "}
-                    <span className="font-bold text-primary">{countdown}</span>{" "}
-                    segundos
+                    You will be redirected in {""}
+                    <span className="font-bold text-primary">
+                      {countdown}
+                    </span>{" "}
+                    seconds
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div>
                     <div className="flex justify-between text-sm mb-1">
-                      <span>Progreso</span>
+                      <span>Progress</span>
                       <span>{progress}%</span>
                     </div>
                     <Progress value={progress} className="h-2" />
@@ -201,11 +200,11 @@ export default function RedirectPage() {
                   <div className="flex gap-2 justify-center mt-4">
                     <Button onClick={handleRedirectNow} className="gap-2">
                       <ArrowRight className="h-4 w-4" />
-                      Ir ahora
+                      Go now
                     </Button>
                     <Button variant="outline" onClick={handleCancel}>
                       <X className="h-4 w-4" />
-                      Cancelar
+                      Cancel
                     </Button>
                   </div>
                 </CardContent>
@@ -215,7 +214,7 @@ export default function RedirectPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Globe className="h-5 w-5" />
-                    Información del destino
+                    Destination information
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2">
@@ -228,7 +227,7 @@ export default function RedirectPage() {
                     ) : (
                       <AlertTriangle className="h-3 w-3" />
                     )}
-                    {redirectData.isSecure ? "Seguro" : "No seguro"}
+                    {redirectData.isSecure ? "Safe" : "No Safe"}
                   </Badge>
                   <Badge variant="outline">{redirectData.domain}</Badge>
                   <div className="p-3 mt-2 bg-muted/50 rounded border">
@@ -260,9 +259,9 @@ export default function RedirectPage() {
                   <div className="mx-auto mb-4 p-4 bg-muted rounded-full w-fit">
                     <X className="h-8 w-8 text-muted-foreground" />
                   </div>
-                  <CardTitle>Redirección cancelada</CardTitle>
+                  <CardTitle>Canceled Redirection</CardTitle>
                   <CardDescription>
-                    Puedes visitar el enlace manualmente si lo deseas.
+                    You can visit the link manually if you wish.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -279,11 +278,11 @@ export default function RedirectPage() {
                         rel="noopener noreferrer"
                       >
                         <ExternalLink className="h-4 w-4 mr-2" />
-                        Visitar enlace
+                        Go to link
                       </a>
                     </Button>
                     <Button variant="outline" asChild>
-                      <NextLink href="/">Volver al inicio</NextLink>
+                      <NextLink href="/#">Back</NextLink>
                     </Button>
                   </div>
                 </CardContent>
@@ -308,9 +307,9 @@ export default function RedirectPage() {
                   >
                     <ArrowRight className="h-8 w-8 text-primary" />
                   </motion.div>
-                  <CardTitle>Redirigiendo...</CardTitle>
+                  <CardTitle>Redirecting...</CardTitle>
                   <CardDescription>
-                    Estamos llevándote a tu destino
+                    We are taking you to your destination
                   </CardDescription>
                 </CardHeader>
               </Card>
