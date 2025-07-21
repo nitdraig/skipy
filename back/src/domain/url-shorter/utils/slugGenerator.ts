@@ -1,13 +1,14 @@
+import { randomBytes } from "crypto";
+
 const alphabet = "abcdefghijklmnopqrstuvwxyz0123456789";
 
-let generateSlug: (size?: number) => string;
-
-(async () => {
-  const { customAlphabet } = await import("nanoid");
-  generateSlug = customAlphabet(alphabet, 6);
-})();
-
-export default function getSlug(): string {
-  if (!generateSlug) throw new Error("Slug generator not initialized yet.");
-  return generateSlug();
+function generateSlug(length = 6): string {
+  const bytes = randomBytes(length);
+  let slug = "";
+  for (let i = 0; i < length; i++) {
+    slug += alphabet[bytes[i] % alphabet.length];
+  }
+  return slug;
 }
+
+export default generateSlug;
