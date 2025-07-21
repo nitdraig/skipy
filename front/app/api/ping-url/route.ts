@@ -1,4 +1,3 @@
-// /pages/api/ping-url.ts
 export default async function handler({ req, res }: any) {
   const { url } = req.query;
   try {
