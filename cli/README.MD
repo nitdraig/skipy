@@ -40,7 +40,7 @@ npm link
 Once installed, run the CLI using the command:
 
 ```bash
-devtools --help
+skipy --help
 ```
 
 This will display the main help and list of available commands.
@@ -50,29 +50,29 @@ This will display the main help and list of available commands.
 ### Basic commands
 
 ```bash
-devtools password      # Generate a secure password
-devtools qr        # Generate a QR code in the terminal
-devtools jwt                # Create, verify, or decode JSON Web Tokens
-devtools fake      # Generate fake test data
-devtools password generate -l 16 -u -d -n -s #It will generate a password of 16 characters that include uppercase, lowercase, numbers and symbols.
-devtools url shorten "https://example.com/long-url"
-devtools url-validator "https://example.com/"
-devtools palette --random  # Random Palette
-devtools palette --base "#3498db" # From Base color
-devtools palette --light "#3498db" #
+skipy password      # Generate a secure password
+skipy qr        # Generate a QR code in the terminal
+skipy jwt                # Create, verify, or decode JSON Web Tokens
+skipy fake      # Generate fake test data
+skipy password generate -l 16 -u -d -n -s #It will generate a password of 16 characters that include uppercase, lowercase, numbers and symbols.
+skipy url shorten "https://example.com/long-url"
+skipy url-validator "https://example.com/"
+skipy palette --random  # Random Palette
+skipy palette --base "#3498db" # From Base color
+skipy palette --light "#3498db" #
 
 ```
 
 Example to generate a password:
 
 ```bash
-devtools password--length 16 --symbols
+skipy password--length 16 --symbols
 ```
 
 Example to generate a QR code:
 
 ```bash
-devtools qr generate "https://example.com"
+skipy qr generate "https://example.com"
 ```
 
 ---
@@ -104,7 +104,7 @@ npm link
 5. Run the CLI
 
 ```bash
-devtools <command>
+skipy <command>
 ```
 
 ---

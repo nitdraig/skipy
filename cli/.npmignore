@@ -1,0 +1,8 @@
+# Ignore everything by default
+*
+
+# Except dist folder and necessary files
+!dist/
+!package.json
+!README.md
+!LICENSE

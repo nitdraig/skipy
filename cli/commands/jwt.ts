@@ -4,7 +4,9 @@ import chalk from "chalk";
 import crypto from "crypto";
 
 export function registerJwtCommands(program: Command) {
-  const jwtCmd = program.command("jwt").description("JWT encoder/decoder");
+  const jwtCmd = program
+    .command("jwt")
+    .description("JWT encoder/decoder & Generator");
 
   jwtCmd
     .command("decode")

@@ -7,7 +7,7 @@ import { registerJwtCommands } from "./commands/jwt";
 import { registerPasswordCommands } from "./commands/password";
 import { registerUrlValidatorCommands } from "./commands/urlValidator";
 import { registerColorPaletteCommand } from "./commands/paletteGenerator";
-import { registerWelcomeCommand } from "./commands/welcome";
+import { registerWelcomeCommand, welcomeHandler } from "./commands/welcome";
 
 const program = new Command();
 
@@ -20,5 +20,9 @@ registerUrlValidatorCommands(program);
 registerFakerCommands(program);
 registerQrCommands(program);
 registerColorPaletteCommand(program);
+
+program.action(() => {
+  welcomeHandler();
+});
 
 program.parse(process.argv);
