@@ -3,10 +3,7 @@ import { asyncHandler } from "../../../shared/utils/asyncHandler";
 import {
   createShortLink,
   redirectToOriginalUrl,
-  unshortenUrl,
   unshortenUrlHybrid,
-  unshortenUrlWithFetch,
-  unshortenUrlWithPuppeteer,
 } from "../controllers/linkControllers";
 
 const router = express.Router();

@@ -16,5 +16,5 @@ mongoose
     });
   })
   .catch((err) => {
-    console.error("Error de conexión a la base de datos:", err);
+    console.error("Database connection error:", err);
   });

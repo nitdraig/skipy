@@ -6,7 +6,6 @@ import https from "https";
 import http from "http";
 import { URL } from "url";
 
-// Interfaces para tipado
 interface CreateShortLinkRequest {
   originalUrl: string;
 }
@@ -77,7 +76,6 @@ async function redirectToOriginalUrl(req: Request, res: Response) {
       return res.status(404).json({ error: "Enlace no encontrado" });
     }
 
-    // En lugar de devolver JSON, redirigir directamente
     res.redirect(302, existingLink.originalUrl);
   } catch (error) {
     console.error("Error al procesar la solicitud:", error);
@@ -85,14 +83,12 @@ async function redirectToOriginalUrl(req: Request, res: Response) {
   }
 }
 
-// Función mejorada para seguir redirecciones
 function followRedirect(url: string, maxRedirects = 10): Promise<string> {
   return new Promise((resolve, reject) => {
     let redirects = 0;
-    const visited = new Set<string>(); // Prevenir loops infinitos
+    const visited = new Set<string>();
 
     const fetchUrl = (currentUrl: string) => {
-      // Prevenir loops infinitos
       if (visited.has(currentUrl)) {
         return reject(new Error("Loop de redirección detectado"));
       }
@@ -141,7 +137,6 @@ function followRedirect(url: string, maxRedirects = 10): Promise<string> {
             );
             fetchUrl(nextUrl);
           } else if (statusCode >= 200 && statusCode < 300) {
-            // URL final encontrada
             resolve(currentUrl);
           } else {
             reject(
@@ -165,7 +160,6 @@ function followRedirect(url: string, maxRedirects = 10): Promise<string> {
       req.end();
     };
 
-    // Validar URL inicial
     try {
       new URL(url);
       fetchUrl(url);
@@ -223,7 +217,6 @@ async function unshortenUrl(
   }
 }
 
-// Función que parsea HTML para encontrar redirecciones JavaScript
 async function extractRedirectFromHTML(
   html: string,
   baseUrl: string
@@ -236,7 +229,6 @@ async function extractRedirectFromHTML(
     return new URL(metaRefreshMatch[1], baseUrl).href;
   }
 
-  // Buscar window.location en JavaScript
   const jsRedirectMatches = [
     /window\.location\.href\s*=\s*["']([^"']+)["']/gi,
     /window\.location\s*=\s*["']([^"']+)["']/gi,
@@ -252,7 +244,6 @@ async function extractRedirectFromHTML(
       try {
         return new URL(match[1], baseUrl).href;
       } catch {
-        // Si falla el parsing de URL, continuar con el siguiente patrón
         continue;
       }
     }
@@ -261,7 +252,6 @@ async function extractRedirectFromHTML(
   return null;
 }
 
-// Función alternativa usando fetch que también parsea HTML
 async function unshortenUrlWithFetch(
   req: Request<{}, {}, UnshortenUrlRequest>,
   res: Response
@@ -285,9 +275,8 @@ async function unshortenUrlWithFetch(
   try {
     console.log(`Intentando expandir URL: ${shortUrl}`);
 
-    // Primer intento: seguir redirecciones HTTP
     const response = await fetch(shortUrl, {
-      method: "GET", // Cambiar a GET para obtener el contenido
+      method: "GET",
       redirect: "follow",
       headers: {
         "User-Agent":
@@ -303,7 +292,6 @@ async function unshortenUrlWithFetch(
 
     let finalUrl = response.url;
 
-    // Si la URL no cambió, intentar parsear el HTML
     if (
       finalUrl === shortUrl ||
       finalUrl.includes(new URL(shortUrl).hostname)
@@ -321,7 +309,6 @@ async function unshortenUrlWithFetch(
 
     console.log(`URL final obtenida: ${finalUrl}`);
 
-    // Verificar si realmente obtuvimos una URL diferente
     const isExpanded =
       finalUrl !== shortUrl && !finalUrl.includes(new URL(shortUrl).hostname);
 
@@ -348,7 +335,6 @@ async function unshortenUrlWithFetch(
   }
 }
 
-// Función con Puppeteer (requiere instalación: npm install puppeteer @types/puppeteer)
 async function unshortenUrlWithPuppeteer(
   req: Request<{}, {}, UnshortenUrlRequest>,
   res: Response
@@ -373,7 +359,6 @@ async function unshortenUrlWithPuppeteer(
   try {
     console.log(`Intentando expandir URL con Puppeteer: ${shortUrl}`);
 
-    // Importar puppeteer dinámicamente
     const puppeteer = await import("puppeteer");
 
     browser = await puppeteer.default.launch({
@@ -383,18 +368,15 @@ async function unshortenUrlWithPuppeteer(
 
     const page = await browser.newPage();
 
-    // Configurar User-Agent
     await page.setUserAgent(
       "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
     );
 
-    // Navegar y esperar redirecciones/JavaScript
     await page.goto(shortUrl, {
       waitUntil: "networkidle2",
       timeout: 15000,
     });
 
-    // Esperar un poco más para asegurar que JavaScript termine
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     const finalUrl = page.url();
@@ -430,7 +412,6 @@ async function unshortenUrlWithPuppeteer(
   }
 }
 
-// Función híbrida que intenta diferentes métodos
 async function unshortenUrlHybrid(
   req: Request<{}, {}, UnshortenUrlRequest>,
   res: Response
@@ -454,7 +435,6 @@ async function unshortenUrlHybrid(
   try {
     console.log(`Método híbrido - Intentando expandir: ${shortUrl}`);
 
-    // Paso 1: Intentar con fetch y parsing HTML
     const response = await fetch(shortUrl, {
       method: "GET",
       redirect: "follow",
@@ -471,7 +451,6 @@ async function unshortenUrlHybrid(
     let finalUrl = response.url;
     let method = "HTTP redirect";
 
-    // Si no hubo redirección HTTP, parsear HTML
     if (
       finalUrl === shortUrl ||
       finalUrl.includes(new URL(shortUrl).hostname)
@@ -486,7 +465,6 @@ async function unshortenUrlHybrid(
         method = "HTML parsing";
         console.log(`URL encontrada en HTML: ${finalUrl}`);
       } else {
-        // Paso 2: Si el parsing HTML falló, usar Puppeteer como último recurso
         console.log("HTML parsing falló, intentando con Puppeteer...");
 
         try {
@@ -510,7 +488,7 @@ async function unshortenUrlHybrid(
             timeout: 15000,
           });
 
-          await new Promise((resolve) => setTimeout(resolve, 3000)); // Esperar que JavaScript termine
+          await new Promise((resolve) => setTimeout(resolve, 3000));
 
           finalUrl = page.url();
           method = "Puppeteer (JavaScript execution)";
@@ -556,7 +534,7 @@ export {
   createShortLink,
   redirectToOriginalUrl,
   unshortenUrl,
-  unshortenUrlWithFetch, // Versión que parsea HTML
-  unshortenUrlWithPuppeteer, // Versión con navegador real
-  unshortenUrlHybrid, // Versión híbrida (recomendada)
+  unshortenUrlWithFetch,
+  unshortenUrlWithPuppeteer,
+  unshortenUrlHybrid,
 };

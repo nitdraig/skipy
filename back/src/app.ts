@@ -21,22 +21,20 @@ app.get("/", (req, res) => {
 });
 app.use(
   cors({
-    // origin: "https://skipy.click",
-    origin: "*",
+    origin: "https://skipy.click",
   })
 );
 app.use(cors());
 app.use(helmet());
 
-// Protecciones contra sobrecarga y ataques comunes
 app.use(
   rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutos
-    max: 100, // 100 requests por IP
+    windowMs: 15 * 60 * 1000,
+    max: 100,
     message: "Too many requests from this IP, please try again later.",
   })
 );
-app.use(mongoSanitize()); // Limpia consultas maliciosas
+app.use(mongoSanitize());
 
 app.use(express.json());
 
