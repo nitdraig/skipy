@@ -1,6 +1,6 @@
 {
   "name": "skipy-devtools-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Skipy Developer Tools CLI",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
