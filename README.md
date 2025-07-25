@@ -15,9 +15,6 @@
   <a href="https://agustin.top/">👨‍💻 Creator Portfolio</a>
 </p>
 <div align="center">
-  <a href="https://github.com/nitdraig/skipy" title="Neko's Github repository.">
-    <img src="https://neko.m1k1o.net/img/logo.png" width="400" height="auto"/>
-  </a>
   <p align="center">
     <a href="https://github.com/nitdraig/skipy/releases">
       <img src="https://img.shields.io/github/v/release/nitdraig/skipy" alt="release">
@@ -25,13 +22,10 @@
     <a href="https://github.com/nitdraig/skipy/blob/master/LICENSE">
       <img src="https://img.shields.io/github/license/nitdraig/skipy" alt="license">
     </a>
-    <a href="https://hub.docker.com/r/nitdraig/skipy">
-      <img src="https://img.shields.io/docker/pulls/nitdraig/skipy" alt="pulls">
-    </a>
-    <a href="https://github.com/nitdraig/skipy/issues">
+      <a href="https://github.com/nitdraig/skipy/issues">
       <img src="https://img.shields.io/github/issues/nitdraig/skipy" alt="issues">
     </a>
-    <a href="https://github.com/sponsors/m1k1o">
+    <a href="https://github.com/sponsors/nitdraig">
       <img src="https://img.shields.io/badge/-sponsor-red" alt="issues">
   </p>
 </div>
