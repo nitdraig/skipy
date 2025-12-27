@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://skipy.click/">
-    <img src="https://res.cloudinary.com/draig/image/upload/v1705703103/Skipy/buyvv2raasztznogzg8g.png" alt="Skipy Logo" width="180" height="180">
+    <img src="https://github.com/nitdraig/skipy/blob/master/skipy-logo.png" alt="Skipy Logo" width="180" height="180">
   </a>
 </p>
 
