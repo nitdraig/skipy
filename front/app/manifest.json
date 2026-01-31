@@ -1,6 +1,8 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "Skipy - Free Multi-tools for Developers",
+  "short_name": "Skipy",
+  "description": "Free developer tools: password generator, QR codes, URL shortener, JSON formatter, and more.",
+  "start_url": "/",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",

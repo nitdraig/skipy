@@ -6,70 +6,106 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { JsonLd } from "../components/JsonLd";
+import {
+  SITE_URL,
+  SITE_NAME,
+  SITE_DESCRIPTION,
+  SITE_AUTHOR,
+} from "@/lib/site-config";
 
 const ibm = IBM_Plex_Mono({ weight: "400", subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Skipy | Free Multi-tools",
-  description: "Free and free tools for programmers and IT users.",
+const ogImage = `${SITE_URL}/card-image.webp`;
 
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: `${SITE_NAME} | Free Multi-tools for Developers`,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
   keywords: [
-    "Free tools",
+    "free tools",
     "programmers",
     "IT users",
-    "multi -tools",
+    "multi-tools",
     "software development",
-    "Programming profits",
-    "Web applications",
-    "Free software",
-    "Tool kit",
-    "Open source",
-    "IT resources",
-    "Essential tools",
-    "Software engineers",
-    "Web developers",
-    "depuration",
+    "web applications",
+    "free software",
+    "tool kit",
+    "open source",
+    "developer tools",
+    "password generator",
+    "QR code generator",
+    "URL shortener",
+    "JSON formatter",
+    "software engineers",
+    "web developers",
     "agile development",
-    "Systems administrators",
-    "Development tools",
+    "systems administrators",
+    "development tools",
     "IT professionals",
   ],
-  twitter: {
-    card: "summary_large_image",
-    title: "Skipy | Multi-tools",
-    description: "Free and free tools for programmers and IT users.",
-    creator: "Avellaneda Agustín",
+  authors: [{ name: SITE_AUTHOR }],
+  creator: SITE_AUTHOR,
+  openGraph: {
+    type: "website",
+    locale: "en",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} | Free Multi-tools for Developers`,
+    description: SITE_DESCRIPTION,
     images: [
-      "https://res.cloudinary.com/draig/image/upload/v1753119537/Skipy/4cfdc0b8-6ef3-45bc-abc9-edf9f1ed0257.png",
+      {
+        url: ogImage,
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} - Developer tools`,
+      },
     ],
   },
-
-  openGraph: {
-    images:
-      "https://res.cloudinary.com/draig/image/upload/v1753119537/Skipy/4cfdc0b8-6ef3-45bc-abc9-edf9f1ed0257.png",
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} | Multi-tools`,
+    description: SITE_DESCRIPTION,
+    creator: SITE_AUTHOR,
+    images: [ogImage],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  alternates: {
+    canonical: SITE_URL,
   },
 };
 
 export default function RootLayout({
-  children,
+    children,
 }: {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={ibm.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Navbar />
-          {children}
-          <Footer />
-          <Toaster />
-        </ThemeProvider>
-      </body>
-    </html>
-  );
+    return (
+        <html lang="en" suppressHydrationWarning>
+            <body className={ibm.className}>
+                <JsonLd />
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="dark"
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    <Navbar />
+                    {children}
+                    <Footer />
+                    <Toaster />
+                </ThemeProvider>
+            </body>
+        </html>
+    );
 }
