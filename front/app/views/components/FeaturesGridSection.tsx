@@ -1,14 +1,6 @@
 import React from "react";
+import NextLink from "next/link";
 import { motion } from "framer-motion";
-import {
-  Github,
-  ExternalLink,
-  Zap,
-  Shield,
-  QrCode,
-  Code,
-  CreditCard,
-} from "lucide-react";
 import {
   cardHoverVariants,
   containerVariants,
@@ -50,28 +42,39 @@ const FeaturesGridSection = () => {
         viewport={{ once: true }}
       >
         {tools.map((tool, index) => (
-          <motion.div key={index} variants={itemVariants} whileHover="hover">
-            <motion.div variants={cardHoverVariants}>
-              <Card className="relative overflow-hidden group cursor-pointer border-2 hover:border-primary/20 transition-colors duration-300">
-                <CardHeader>
-                  <div className="flex items-center gap-2">
-                    <motion.div
-                      className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300"
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <tool.icon className="h-5 w-5 text-primary" />
-                    </motion.div>
-                    <CardTitle className="text-lg">{tool.name}</CardTitle>
-                  </div>
-                  <CardDescription>{tool.description}</CardDescription>
-                </CardHeader>
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  initial={false}
-                />
-              </Card>
-            </motion.div>
+          <motion.div
+            key={tool.id}
+            className="h-full min-h-[180px]"
+            variants={itemVariants}
+            whileHover="hover"
+          >
+            <NextLink href={`/app?tool=${tool.id}`} className="block h-full">
+              <motion.div variants={cardHoverVariants} className="h-full">
+                <Card className="relative flex h-full flex-col overflow-hidden group cursor-pointer border-2 hover:border-primary/20 transition-colors duration-300">
+                  <CardHeader className="flex flex-col flex-1">
+                    <div className="flex items-center gap-2">
+                      <motion.div
+                        className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300 flex-shrink-0"
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <tool.icon className="h-5 w-5 text-primary" />
+                      </motion.div>
+                      <CardTitle className="text-lg leading-tight">
+                        {tool.name}
+                      </CardTitle>
+                    </div>
+                    <CardDescription className="flex-1 mt-2">
+                      {tool.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                    initial={false}
+                  />
+                </Card>
+              </motion.div>
+            </NextLink>
           </motion.div>
         ))}
       </motion.div>

@@ -100,7 +100,7 @@ const CliSection = () => {
   };
 
   return (
-    <section id="cli" className="px-4 py-8 md:py-12 lg:py-24 bg-muted/20">
+    <section id="cli" className="container py-8 md:py-12 lg:py-24 bg-muted/20">
       <motion.div
         className="mx-auto flex max-w-[980px] flex-col items-center gap-4 text-center"
         initial={{ opacity: 0, y: 50 }}

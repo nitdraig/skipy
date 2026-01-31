@@ -2,6 +2,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Link,
@@ -53,16 +54,29 @@ const toolComponents: Record<string, any> = {
 };
 
 export default function AppPage() {
+  const searchParams = useSearchParams();
+  const toolFromUrl = searchParams.get("tool");
+
   const [activeCategory, setActiveCategory] = useState(toolCategories[0].id);
   const [activeTab, setActiveTab] = useState(toolCategories[0].tools[0].id);
 
   useEffect(() => {
+    if (toolFromUrl && toolComponents[toolFromUrl]) {
+      const category = toolCategories.find((cat) =>
+        cat.tools.some((t) => t.id === toolFromUrl)
+      );
+      if (category) {
+        setActiveCategory(category.id);
+        setActiveTab(toolFromUrl);
+        return;
+      }
+    }
     const defaultTool = toolCategories.find((cat) => cat.id === activeCategory)
       ?.tools[0];
     if (defaultTool) {
       setActiveTab(defaultTool.id);
     }
-  }, [activeCategory]);
+  }, [activeCategory, toolFromUrl]);
 
   const ActiveComponent = toolComponents[activeTab];
 
