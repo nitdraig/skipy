@@ -3,7 +3,7 @@
  * Override with NEXT_PUBLIC_SITE_URL in production.
  */
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://skipy.com";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://skipy.click";
 
 export const SITE_NAME = "Skipy";
 export const SITE_DESCRIPTION =
