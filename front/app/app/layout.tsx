@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { SITE_URL, SITE_NAME } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -16,10 +17,22 @@ export const metadata: Metadata = {
   },
 };
 
+function AppToolsFallback() {
+  return (
+    <main className="flex-1 flex items-center justify-center min-h-[50vh]">
+      <p className="text-muted-foreground animate-pulse">Loading tools...</p>
+    </main>
+  );
+}
+
 export default function AppLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  return (
+    <Suspense fallback={<AppToolsFallback />}>
+      {children}
+    </Suspense>
+  );
 }
