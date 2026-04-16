@@ -1,5 +1,5 @@
 import type React from "react";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -18,8 +18,23 @@ const ibm = IBM_Plex_Mono({ weight: "400", subsets: ["latin"] });
 
 const ogImage = `${SITE_URL}/card-image.webp`;
 
+export const viewport: Viewport = {
+  themeColor: "#1d3d53",
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  applicationName: SITE_NAME,
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: SITE_NAME,
+  },
+  formatDetection: {
+    telephone: false,
+  },
   title: {
     default: `${SITE_NAME} | Free Multi-tools for Developers`,
     template: `%s | ${SITE_NAME}`,

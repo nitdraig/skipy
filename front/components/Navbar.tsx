@@ -5,6 +5,7 @@ import NextLink from "next/link";
 import { Github } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import PwaInstallButton from "@/components/PwaInstallButton";
 
 const Navbar = () => {
     return (
@@ -31,7 +32,8 @@ const Navbar = () => {
                         </NextLink>
                     </div>
                     <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-                        <nav className="flex items-center space-x-6 text-sm font-medium">
+                        <nav className="flex flex-wrap items-center gap-3 sm:gap-4 md:gap-6 text-sm font-medium">
+                            <PwaInstallButton />
                             <motion.div
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}

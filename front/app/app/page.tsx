@@ -60,23 +60,29 @@ export default function AppPage() {
   const [activeCategory, setActiveCategory] = useState(toolCategories[0].id);
   const [activeTab, setActiveTab] = useState(toolCategories[0].tools[0].id);
 
+  // Aplicar deep link solo cuando cambia el query ?tool= (no en cada cambio de categoría).
+  // Antes, toolFromUrl + activeCategory en las deps forzaba siempre la categoría del tool
+  // de la URL y bloqueaba salir de esa categoría tras venir desde el dashboard.
   useEffect(() => {
-    if (toolFromUrl && toolComponents[toolFromUrl]) {
-      const category = toolCategories.find((cat) =>
-        cat.tools.some((t) => t.id === toolFromUrl)
-      );
-      if (category) {
-        setActiveCategory(category.id);
-        setActiveTab(toolFromUrl);
-        return;
-      }
+    if (!toolFromUrl || !toolComponents[toolFromUrl]) return;
+    const category = toolCategories.find((cat) =>
+      cat.tools.some((t) => t.id === toolFromUrl)
+    );
+    if (category) {
+      setActiveCategory(category.id);
+      setActiveTab(toolFromUrl);
     }
-    const defaultTool = toolCategories.find((cat) => cat.id === activeCategory)
-      ?.tools[0];
-    if (defaultTool) {
-      setActiveTab(defaultTool.id);
+  }, [toolFromUrl]);
+
+  // Si la pestaña actual no pertenece a la categoría activa, usar la primera herramienta de la categoría.
+  useEffect(() => {
+    const toolsInCategory =
+      toolCategories.find((c) => c.id === activeCategory)?.tools ?? [];
+    const tabStillValid = toolsInCategory.some((t) => t.id === activeTab);
+    if (!tabStillValid && toolsInCategory.length > 0) {
+      setActiveTab(toolsInCategory[0].id);
     }
-  }, [activeCategory, toolFromUrl]);
+  }, [activeCategory, activeTab]);
 
   const ActiveComponent = toolComponents[activeTab];
 
