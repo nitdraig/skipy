@@ -17,6 +17,9 @@ type ChromiumInstallEvent = Event & {
   userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
 };
 
+const installButtonClass =
+  "h-9 shrink-0 gap-2 rounded-lg px-3.5 text-sm font-semibold shadow-md";
+
 function isStandalone(): boolean {
   if (typeof window === "undefined") return false;
   const nav = window.navigator as Navigator & { standalone?: boolean };
@@ -83,54 +86,56 @@ export default function PwaInstallButton() {
   const showIos = !chromiumReady && isIOS();
   if (!chromiumReady && !showIos) return null;
 
+  if (chromiumReady) {
+    return (
+      <Button
+        type="button"
+        variant="default"
+        size="sm"
+        className={installButtonClass}
+        onClick={runChromiumInstall}
+      >
+        <Download className="h-4 w-4 shrink-0" aria-hidden />
+        Install
+      </Button>
+    );
+  }
+
   return (
-    <div className="shrink-0 md:hidden">
-      {chromiumReady ? (
-        <Button
-          type="button"
-          variant="outline"
-          size="sm"
-          className="h-8 gap-1.5 px-2.5 text-xs font-medium border-primary/30"
-          onClick={runChromiumInstall}
-        >
-          <Download className="h-3.5 w-3.5" aria-hidden />
-          Instalar
-        </Button>
-      ) : (
-        <>
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            className="h-8 gap-1.5 px-2.5 text-xs font-medium border-primary/30"
-            onClick={() => setIosSheetOpen(true)}
-          >
-            <Download className="h-3.5 w-3.5" aria-hidden />
-            Instalar
-          </Button>
-          <Sheet open={iosSheetOpen} onOpenChange={setIosSheetOpen}>
-            <SheetContent side="bottom" className="rounded-t-xl">
-              <SheetHeader>
-                <SheetTitle>Instalar {SITE_NAME}</SheetTitle>
-                <SheetDescription>
-                  Instrucciones según el navegador en tu iPhone o iPad.
-                </SheetDescription>
-              </SheetHeader>
-              <div className="mt-4 space-y-3 text-left text-sm text-muted-foreground">
-                <p>
-                  En Safari, pulsa <strong className="text-foreground">Compartir</strong>{" "}
-                  (cuadrado con flecha hacia arriba) y elige{" "}
-                  <strong className="text-foreground">Añadir a pantalla de inicio</strong>.
-                </p>
-                <p>
-                  En Chrome para iOS, abre el menú <strong className="text-foreground">⋮</strong> y
-                  busca la opción para añadir a la pantalla de inicio o compartir, según la versión.
-                </p>
-              </div>
-            </SheetContent>
-          </Sheet>
-        </>
-      )}
-    </div>
+    <>
+      <Button
+        type="button"
+        variant="default"
+        size="sm"
+        className={installButtonClass}
+        onClick={() => setIosSheetOpen(true)}
+      >
+        <Download className="h-4 w-4 shrink-0" aria-hidden />
+        Install
+      </Button>
+      <Sheet open={iosSheetOpen} onOpenChange={setIosSheetOpen}>
+        <SheetContent side="bottom" className="rounded-t-xl pb-8">
+          <SheetHeader className="text-left">
+            <SheetTitle>Install {SITE_NAME}</SheetTitle>
+            <SheetDescription>
+              Add this site to your Home Screen to open it like an app.
+            </SheetDescription>
+          </SheetHeader>
+          <div className="mt-4 space-y-3 text-left text-sm text-muted-foreground">
+            <p>
+              In <strong className="text-foreground">Safari</strong>, tap the{" "}
+              <strong className="text-foreground">Share</strong> button (square
+              with an arrow) and choose{" "}
+              <strong className="text-foreground">Add to Home Screen</strong>.
+            </p>
+            <p>
+              In <strong className="text-foreground">Chrome on iOS</strong>, open
+              the <strong className="text-foreground">⋮</strong> menu and look
+              for Add to Home Screen or Share, depending on your version.
+            </p>
+          </div>
+        </SheetContent>
+      </Sheet>
+    </>
   );
 }
