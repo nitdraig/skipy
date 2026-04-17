@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import NextLink from "next/link";
 import { Github, Menu } from "lucide-react";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import PwaInstallButton from "@/components/PwaInstallButton";
 import { Button } from "@/components/ui/button";
@@ -42,7 +41,7 @@ function MobileNavMenu() {
       </SheetTrigger>
       <SheetContent
         side="right"
-        className="flex w-[min(100vw,20rem)] flex-col border-l bg-background/95 backdrop-blur-xl"
+        className="flex w-[min(100vw,20rem)] flex-col border-l bg-background md:bg-background/95 md:backdrop-blur-xl"
       >
         <SheetHeader className="text-left">
           <SheetTitle>Menu</SheetTitle>
@@ -90,96 +89,71 @@ function MobileNavMenu() {
 
 const Navbar = () => {
   return (
-    <>
-      <motion.header
-        className="fixed top-0 z-50 w-full border-b bg-background/80 px-4 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60 sm:px-6"
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-      >
-        <div className="container flex h-14 items-center justify-between gap-3">
-          <div className="flex min-w-0 shrink-0 items-center">
-            <NextLink
-              href="/#"
-              className="group flex items-center gap-2 pr-2"
-            >
-              <motion.div
-                whileHover={{ rotate: 180 }}
-                transition={{ duration: 0.3 }}
-              >
-                <Image
-                  src="/skipy-logo-clean.png"
-                  alt="Skipy"
-                  width={24}
-                  height={24}
-                />
-              </motion.div>
-              <span className="font-bold tracking-tight">Skipy</span>
-            </NextLink>
-          </div>
-
-          <div className="flex min-w-0 flex-1 items-center justify-end gap-2 sm:gap-3">
-            <div className="flex shrink-0 items-center gap-2 md:hidden">
-              <PwaInstallButton />
-              <MobileNavMenu />
-            </div>
-
-            <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <NextLink href="/#features">Features</NextLink>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <NextLink href="/#roadmap">Roadmap</NextLink>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <NextLink href="/#cli">CLI</NextLink>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <NextLink
-                  href="https://github.com/nitdraig/skipy"
-                  className="flex items-center gap-1.5"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Github className="h-4 w-4" />
-                  <span>GitHub</span>
-                </NextLink>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <NextLink
-                  href="https://www.npmjs.com/package/skipy-devtools-cli"
-                  className="flex items-center gap-1.5"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    alt="npm"
-                    className="h-4 w-4 rounded-full"
-                    src="https://avatars.githubusercontent.com/u/6078720?s=200&v=4"
-                  />
-                  <span>npm</span>
-                </NextLink>
-              </motion.div>
-            </nav>
-          </div>
+    <header className="fixed top-0 z-50 w-full border-b bg-background/95 px-4 sm:px-6 md:bg-background/80 md:backdrop-blur-xl md:supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-14 items-center justify-between gap-3">
+        <div className="flex min-w-0 shrink-0 items-center">
+          <NextLink href="/#" className="group flex items-center gap-2 pr-2">
+            <Image
+              src="/skipy-logo-clean.png"
+              alt="Skipy"
+              width={24}
+              height={24}
+            />
+            <span className="font-bold tracking-tight">Skipy</span>
+          </NextLink>
         </div>
-      </motion.header>
-    </>
+
+        <div className="flex min-w-0 flex-1 items-center justify-end gap-2 sm:gap-3">
+          <div className="flex shrink-0 items-center gap-2 md:hidden">
+            <PwaInstallButton />
+            <MobileNavMenu />
+          </div>
+
+          <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
+            <NextLink
+              href="/#features"
+              className="text-foreground/90 transition-colors hover:text-foreground"
+            >
+              Features
+            </NextLink>
+            <NextLink
+              href="/#roadmap"
+              className="text-foreground/90 transition-colors hover:text-foreground"
+            >
+              Roadmap
+            </NextLink>
+            <NextLink
+              href="/#cli"
+              className="text-foreground/90 transition-colors hover:text-foreground"
+            >
+              CLI
+            </NextLink>
+            <NextLink
+              href="https://github.com/nitdraig/skipy"
+              className="flex items-center gap-1.5 text-foreground/90 transition-colors hover:text-foreground"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Github className="h-4 w-4" />
+              <span>GitHub</span>
+            </NextLink>
+            <NextLink
+              href="https://www.npmjs.com/package/skipy-devtools-cli"
+              className="flex items-center gap-1.5 text-foreground/90 transition-colors hover:text-foreground"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                alt="npm"
+                className="h-4 w-4 rounded-full"
+                src="https://avatars.githubusercontent.com/u/6078720?s=200&v=4"
+              />
+              <span>npm</span>
+            </NextLink>
+          </nav>
+        </div>
+      </div>
+    </header>
   );
 };
 

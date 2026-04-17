@@ -1,6 +1,6 @@
+"use client";
+
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { containerVariants, itemVariants } from "@/hooks/Motion-Variants";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -100,39 +100,15 @@ const CliSection = () => {
   };
 
   return (
-    <section id="cli" className="container py-8 md:py-12 lg:py-24 bg-muted/20">
-      <motion.div
-        className="mx-auto flex max-w-[980px] flex-col items-center gap-4 text-center"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-      >
-        <motion.div
-          className="flex items-center gap-3 mb-4"
-          initial={{ opacity: 0, scale: 0.5 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <motion.div
-            animate={{
-              rotate: [0, 5, -5, 0],
-              scale: [1, 1.1, 1],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Number.POSITIVE_INFINITY,
-              repeatType: "reverse",
-            }}
-          >
-            <Terminal className="h-10 w-10 text-primary" />
-          </motion.div>
-          <Badge variant="outline" className="text-sm px-3 py-1">
-            <Code className="h-3 w-3 mr-1" />
+    <section id="cli" className="container bg-muted/20 py-8 md:py-12 lg:py-24">
+      <div className="mx-auto flex max-w-[980px] flex-col items-center gap-4 text-center">
+        <div className="mb-4 flex items-center gap-3">
+          <Terminal className="h-10 w-10 text-primary" />
+          <Badge variant="outline" className="px-3 py-1 text-sm">
+            <Code className="mr-1 h-3 w-3" />
             CLI Available
           </Badge>
-        </motion.div>
+        </div>
 
         <h2 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl">
           Use from Your Terminal
@@ -142,29 +118,16 @@ const CliSection = () => {
           your command line. Perfect for automation, scripting, and quick
           development tasks.
         </p>
-      </motion.div>
+      </div>
 
-      {/* Installation Section */}
-      <motion.div
-        className="mx-auto max-w-4xl mt-12"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        viewport={{ once: true }}
-      >
-        <h3 className="text-2xl font-semibold mb-6 text-center">Quick Start</h3>
+      <div className="mx-auto mt-12 max-w-4xl">
+        <h3 className="mb-6 text-center text-2xl font-semibold">Quick Start</h3>
         <div className="grid gap-4 md:grid-cols-2">
           {installCommands.map((install, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: index === 0 ? -30 : 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <Card className="border-2 border-dashed hover:border-primary/50 transition-all duration-300">
+            <div key={index}>
+              <Card className="border-2 border-dashed transition-colors duration-200 hover:border-primary/50">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg flex items-center gap-2">
+                  <CardTitle className="flex items-center gap-2 text-lg">
                     <ChevronRight className="h-4 w-4 text-primary" />
                     {install.title}
                   </CardTitle>
@@ -173,7 +136,7 @@ const CliSection = () => {
                   </p>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex items-center gap-2 p-3 bg-muted/50 rounded-md font-mono text-sm">
+                  <div className="flex items-center gap-2 rounded-md bg-muted/50 p-3 font-mono text-sm">
                     <span className="flex-1 text-green-600">
                       $ {install.command}
                     </span>
@@ -184,68 +147,42 @@ const CliSection = () => {
                         copyToClipboard(install.command, `install-${index}`)
                       }
                       className="h-6 w-6 p-0"
+                      aria-label="Copy command"
                     >
-                      <AnimatePresence mode="wait">
-                        {copiedCommand === `install-${index}` ? (
-                          <motion.div
-                            key="check"
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            exit={{ scale: 0 }}
-                            className="text-green-600"
-                          >
-                            ✓
-                          </motion.div>
-                        ) : (
-                          <Copy className="h-3 w-3" />
-                        )}
-                      </AnimatePresence>
+                      {copiedCommand === `install-${index}` ? (
+                        <span className="text-green-600">✓</span>
+                      ) : (
+                        <Copy className="h-3 w-3" />
+                      )}
                     </Button>
                   </div>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           ))}
         </div>
-      </motion.div>
+      </div>
 
-      {/* CLI Features */}
-      <motion.div
-        className="mx-auto max-w-6xl mt-16"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        <h3 className="text-2xl font-semibold mb-8 text-center">
+      <div className="mx-auto mt-16 max-w-6xl">
+        <h3 className="mb-8 text-center text-2xl font-semibold">
           Available Commands
         </h3>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {cliFeatures.map((feature, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              whileHover={{
-                scale: 1.02,
-                y: -5,
-              }}
-              className="group"
-            >
-              <Card className="h-full border-2 hover:border-primary/20 transition-all duration-300 hover:shadow-lg">
+            <div key={index} className="group">
+              <Card className="h-full border-2 transition-all duration-200 hover:border-primary/20 hover:shadow-md">
                 <CardHeader className="pb-3">
                   <div className="flex items-start gap-3">
-                    <motion.div
-                      className={`p-2 rounded-lg bg-muted/50 ${feature.color}`}
-                      whileHover={{ rotate: 10 }}
-                      transition={{ type: "spring", stiffness: 300 }}
+                    <div
+                      className={`rounded-lg bg-muted/50 p-2 ${feature.color}`}
                     >
                       <feature.icon className="h-5 w-5" />
-                    </motion.div>
+                    </div>
                     <div className="flex-1">
                       <CardTitle className="text-lg leading-tight">
                         {feature.name}
                       </CardTitle>
-                      <p className="text-sm text-muted-foreground mt-1">
+                      <p className="mt-1 text-sm text-muted-foreground">
                         {feature.description}
                       </p>
                     </div>
@@ -253,9 +190,9 @@ const CliSection = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
-                    <div className="flex items-center gap-2 p-3 bg-black/5 dark:bg-white/5 rounded-md font-mono text-xs overflow-hidden">
-                      <span className="text-green-600 flex-shrink-0">$</span>
-                      <span className="flex-1 truncate text-muted-foreground group-hover:text-foreground transition-colors">
+                    <div className="flex items-center gap-2 overflow-hidden rounded-md bg-black/5 p-3 font-mono text-xs dark:bg-white/5">
+                      <span className="flex-shrink-0 text-green-600">$</span>
+                      <span className="flex-1 truncate text-muted-foreground transition-colors group-hover:text-foreground">
                         {feature.command}
                       </span>
                       <Button
@@ -264,41 +201,25 @@ const CliSection = () => {
                         onClick={() =>
                           copyToClipboard(feature.command, `feature-${index}`)
                         }
-                        className="h-6 w-6 p-0 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                        className="h-6 w-6 flex-shrink-0 p-0 opacity-0 transition-opacity group-hover:opacity-100 md:opacity-100"
+                        aria-label="Copy command"
                       >
-                        <AnimatePresence mode="wait">
-                          {copiedCommand === `feature-${index}` ? (
-                            <motion.div
-                              key="check"
-                              initial={{ scale: 0 }}
-                              animate={{ scale: 1 }}
-                              exit={{ scale: 0 }}
-                              className="text-green-600"
-                            >
-                              ✓
-                            </motion.div>
-                          ) : (
-                            <Copy className="h-3 w-3" />
-                          )}
-                        </AnimatePresence>
+                        {copiedCommand === `feature-${index}` ? (
+                          <span className="text-green-600">✓</span>
+                        ) : (
+                          <Copy className="h-3 w-3" />
+                        )}
                       </Button>
                     </div>
                   </div>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           ))}
         </div>
-      </motion.div>
+      </div>
 
-      {/* Links Section */}
-      <motion.div
-        className="mx-auto max-w-2xl mt-16 text-center"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-        viewport={{ once: true }}
-      >
+      <div className="mx-auto mt-16 max-w-2xl text-center">
         <div className="flex flex-wrap justify-center gap-4">
           <Button variant="outline" asChild>
             <a
@@ -325,10 +246,10 @@ const CliSection = () => {
             </a>
           </Button>
         </div>
-        <p className="text-sm text-muted-foreground mt-4">
+        <p className="mt-4 text-sm text-muted-foreground">
           Open source • GNU License • Built with TypeScript
         </p>
-      </motion.div>
+      </div>
     </section>
   );
 };
