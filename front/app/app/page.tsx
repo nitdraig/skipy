@@ -1,56 +1,44 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
+import dynamic from "next/dynamic";
+import type { ComponentType } from "react";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Link,
-  ExternalLink,
-  Shield,
-  QrCode,
-  Code,
-  CreditCard,
-  Unlink,
-  Palette,
-  VenetianMaskIcon,
-  Regex,
-  FileJson2Icon,
-  PersonStandingIcon,
-  Braces,
-  Eye,
-} from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
-import { pageTransition, pageVariants } from "@/hooks/Motion-Variants";
-
-// Tool components
-import LinkShortener from "./components/LinkShorter";
-import PasswordGenerator from "./components/PasswordGenerator";
-import QRGenerator from "./components/QRGenerator";
-import CreditCardGenerator from "./components/CreditCardGenerator";
-import EncoderDecoder from "./components/EncoderDecoder";
-import ExternalLinkUnshortener from "./components/ExternalLinkUnshortener";
-import ColorPaletteGenerator from "./components/ColorPaletteGenerator";
-import JWTToolkit from "./components/JWTToolKit";
-import JSONFormatterValidator from "./components/JsonValidator";
-import FakeDataGenerator from "./components/FakeDataGenerator";
-import YamlJsonConverter from "./components/YamlJsonConverter";
-import UrlValidator from "./components/UrlValidator";
 import { toolCategories } from "@/data/toolCategories";
 
-const toolComponents: Record<string, any> = {
-  "link-shortener": LinkShortener,
-  "password-generator": PasswordGenerator,
-  "link-unshortener": ExternalLinkUnshortener,
-  "qr-generator": QRGenerator,
-  "encoder-decoder": EncoderDecoder,
-  "color-palette-generator": ColorPaletteGenerator,
-  "credit-card": CreditCardGenerator,
-  "jwt-tool": JWTToolkit,
-  "json-validator": JSONFormatterValidator,
-  "fake-data-generator": FakeDataGenerator,
-  "yaml-json": YamlJsonConverter,
-  "url-validator": UrlValidator,
+function ToolLoading() {
+  return (
+    <div
+      className="flex min-h-[220px] items-center justify-center rounded-lg border border-dashed border-muted/60 bg-muted/20 text-sm text-muted-foreground"
+      aria-busy="true"
+      aria-live="polite"
+    >
+      Loading tool…
+    </div>
+  );
+}
+
+const dyn = (loader: () => Promise<{ default: ComponentType<object> }>) =>
+  dynamic(loader, {
+    loading: () => <ToolLoading />,
+    ssr: true,
+  });
+
+const toolComponents: Record<string, ComponentType<object>> = {
+  "link-shortener": dyn(() => import("./components/LinkShorter")),
+  "password-generator": dyn(() => import("./components/PasswordGenerator")),
+  "link-unshortener": dyn(() => import("./components/ExternalLinkUnshortener")),
+  "qr-generator": dyn(() => import("./components/QRGenerator")),
+  "encoder-decoder": dyn(() => import("./components/EncoderDecoder")),
+  "color-palette-generator": dyn(() => import("./components/ColorPaletteGenerator")),
+  "credit-card": dyn(() => import("./components/CreditCardGenerator")),
+  "jwt-tool": dyn(() => import("./components/JWTToolKit")),
+  "json-validator": dyn(() => import("./components/JsonValidator")),
+  "fake-data-generator": dyn(() => import("./components/FakeDataGenerator")),
+  "yaml-json": dyn(() => import("./components/YamlJsonConverter")),
+  "url-validator": dyn(() => import("./components/UrlValidator")),
 };
 
 export default function AppPage() {
@@ -60,9 +48,6 @@ export default function AppPage() {
   const [activeCategory, setActiveCategory] = useState(toolCategories[0].id);
   const [activeTab, setActiveTab] = useState(toolCategories[0].tools[0].id);
 
-  // Aplicar deep link solo cuando cambia el query ?tool= (no en cada cambio de categoría).
-  // Antes, toolFromUrl + activeCategory en las deps forzaba siempre la categoría del tool
-  // de la URL y bloqueaba salir de esa categoría tras venir desde el dashboard.
   useEffect(() => {
     if (!toolFromUrl || !toolComponents[toolFromUrl]) return;
     const category = toolCategories.find((cat) =>
@@ -74,7 +59,6 @@ export default function AppPage() {
     }
   }, [toolFromUrl]);
 
-  // Si la pestaña actual no pertenece a la categoría activa, usar la primera herramienta de la categoría.
   useEffect(() => {
     const toolsInCategory =
       toolCategories.find((c) => c.id === activeCategory)?.tools ?? [];
@@ -88,32 +72,17 @@ export default function AppPage() {
 
   return (
     <main className="flex-1">
-      <motion.div
-        className=" bg-background/80 backdrop-blur-xl"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
+      <div className="border-b bg-background/90 md:bg-background/80 md:backdrop-blur-xl">
         <div className="flex h-16 items-center px-4">
-          <motion.h1
-            className="text-xl font-semibold ml-4"
-            animate={{
-              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          >
+          <h1 className="ml-4 text-xl font-semibold tracking-tight">
             Developer Tools
-          </motion.h1>
+          </h1>
         </div>
-      </motion.div>
+      </div>
 
       <div className="flex-1 space-y-4 p-4 md:p-8">
         <Tabs value={activeCategory} onValueChange={setActiveCategory}>
-          <TabsList className="grid grid-cols-2 lg:h-auto h-20 sm:grid-cols-4 gap-1 p-1 mb-4 bg-muted/30 backdrop-blur-sm">
+          <TabsList className="mb-4 grid h-20 grid-cols-2 gap-1 bg-muted/30 p-1 sm:grid-cols-4 md:backdrop-blur-sm lg:h-auto">
             {toolCategories.map((category) => (
               <TabsTrigger
                 key={category.id}
@@ -127,40 +96,23 @@ export default function AppPage() {
         </Tabs>
 
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="grid grid-cols-2 lg:h-auto h-20 sm:grid-cols-3 md:grid-cols-4 gap-1 p-1 bg-muted/50 backdrop-blur-sm">
+          <TabsList className="grid h-auto min-h-[5rem] grid-cols-2 gap-1 bg-muted/40 p-1 sm:grid-cols-3 md:grid-cols-4 md:bg-muted/50 md:backdrop-blur-sm lg:h-auto">
             {toolCategories
               .find((cat) => cat.id === activeCategory)
-              ?.tools.map((tool, index) => (
-                <motion.div
+              ?.tools.map((tool) => (
+                <TabsTrigger
                   key={tool.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                  value={tool.id}
+                  className="flex items-center justify-center gap-2 px-2 py-2 text-xs transition-colors active:bg-accent/80 md:hover:bg-accent/60"
                 >
-                  <TabsTrigger
-                    value={tool.id}
-                    className="flex items-center justify-center text-xs py-2 px-2 hover:scale-105 transition-all"
-                  >
-                    <tool.icon className="w-4 h-4 mr-2" />
-                    {tool.shortName}
-                  </TabsTrigger>
-                </motion.div>
+                  <tool.icon className="h-4 w-4 shrink-0" />
+                  {tool.shortName}
+                </TabsTrigger>
               ))}
           </TabsList>
 
-          <div className="mt-6">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                variants={pageVariants}
-                initial="initial"
-                animate="in"
-                exit="out"
-                transition={pageTransition}
-              >
-                <ActiveComponent />
-              </motion.div>
-            </AnimatePresence>
+          <div key={activeTab} className="mt-6">
+            <ActiveComponent />
           </div>
         </Tabs>
       </div>

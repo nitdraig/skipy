@@ -4,7 +4,8 @@ const withPWA = withPWAInit({
   dest: "public",
   disable: process.env.NODE_ENV === "development",
   register: true,
-  cacheOnFrontEndNav: true,
+  // Evita trabajo extra del SW en cada navegación cliente (mejor en móvil / PWA).
+  cacheOnFrontEndNav: false,
   workboxOptions: {
     disableDevLogs: true,
   },
