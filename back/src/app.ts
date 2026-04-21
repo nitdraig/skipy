@@ -5,6 +5,7 @@ import linkRouter from "./domain/url-shorter/routes/linkRoutes";
 import rateLimit from "express-rate-limit";
 import mongoSanitize from "express-mongo-sanitize";
 import qrGeneratorRouter from "./domain/qr-generator/routes/qr-generator";
+import { createPulseRouter } from "./shared/routes/pulseRoutes";
 const app = express();
 
 app.use(express.json());
@@ -23,7 +24,7 @@ app.use(
   cors({
     origin: "https://www.skipy.click",
     //  origin: "*",
-  })
+  }),
 );
 app.use(cors());
 app.use(helmet());
@@ -33,7 +34,7 @@ app.use(
     windowMs: 15 * 60 * 1000,
     max: 100,
     message: "Too many requests from this IP, please try again later.",
-  })
+  }),
 );
 app.use(mongoSanitize());
 
@@ -41,5 +42,10 @@ app.use(express.json());
 
 app.use("/url-shorter", linkRouter);
 app.use("/qr-generator", qrGeneratorRouter);
+
+const pulseRouter = createPulseRouter();
+if (pulseRouter) {
+  app.use(pulseRouter);
+}
 
 export default app;
